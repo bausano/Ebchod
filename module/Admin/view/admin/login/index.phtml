@@ -1,0 +1,22 @@
+<?php echo $this->messenger( $this->message ); ?>
+
+<?php $form = $this->loginForm;
+      $form->prepare();
+      echo $this->form()->openTag($form); ?>
+        
+
+<div class="login-area">
+    <div class="tile no-hover">
+        <label>Administrator login</label>
+        <div class="tile-subheading center">
+            <?= $this->formElement( $form->get('name') ) ?>
+            <?= $this->formElement( $form->get('password') ) ?>
+            <p class="center"><?= $this->formElement( $form->get('remember') ) ?> <span class="small">Remember me</span></p>
+        </div>
+        <div class="tile-subheading center">
+           <?= $this->formButton( $form->get('submit'), "LOGIN" ) ?>
+        </div>
+    </div>
+</div>
+
+<?= $this->form()->closeTag() ?>

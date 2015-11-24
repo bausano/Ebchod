@@ -1,0 +1,29 @@
+<section class="part white">
+    <div class="area">
+        <h2><?php echo $this->translate('An error occurred') ?></h2>
+        <?php if(isset($this->display_exceptions) && $this->display_exceptions): ?>
+            <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
+                <hr/>
+                <h3><?php echo get_class($this->exception); ?></h3>
+                <dl>
+                    <dt><?php echo $this->translate('File') ?>:</dt>
+                    <dd>
+                        <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
+                    </dd>
+                    <dt><?php echo $this->translate('Message') ?>:</dt>
+                    <dd>
+                        <pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getMessage()) ?></pre>
+                    </dd>
+                    <!--
+                    <dt><?php echo $this->translate('Stack trace') ?>:</dt> 
+                    <dd>
+                        <pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getTraceAsString()) ?></pre>
+                    </dd>
+                    -->
+                </dl>
+            <?php endif; ?>
+        <?php else: ?>
+            <h3><?php echo $this->translate('No Exception available') ?></h3>
+        <?php endif; ?>
+    </div>
+</section>

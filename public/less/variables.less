@@ -1,0 +1,722 @@
+/**
+ *   Created on : 28.10.2015
+ *   Author     : Pavel
+ */
+
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
+
+/**
+ * 0 - Reset
+ */
+
+* { margin: 0; padding: 0; }
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;    
+}
+input,button,textarea,select,option {
+    outline: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+/**
+ * 1 - Proměnné
+ */
+@theme-color: #b23432;
+@lighter-color: #C97170;
+@darker-color: #591A19;
+@secondary: #d9403c;
+@third: #cc3c39;
+
+@light-grey: #eee;
+@grey: #666;
+@dark-grey: #333;
+
+@img-folder: "../img/";
+@font-folder: "../fonts/";
+
+@green: green;
+@yellow: #f1be28;
+
+/**
+ * 2 - Funkce
+ */
+.animate (@time: 0.2s) {
+  -webkit-transition: all linear @time;
+     -moz-transition: all linear @time;
+       -o-transition: all linear @time;
+          transition: all linear @time;
+}
+
+.gradient(@color1,@color2) {
+    background-color: @color1;
+    background-image: -moz-linear-gradient(top, @color1, @color2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@color1), to(@color2));
+    background-image: -webkit-linear-gradient(top, @color1, @color2);
+    background-image: -o-linear-gradient(top, @color1, @color2);
+    background-image: linear-gradient(to bottom, @color1, @color2);    
+}
+
+.underline() {
+    padding-bottom: 15px;
+    background: url("@{img-folder}underline.png") center bottom no-repeat;
+}
+
+.shadow(@opacity: 0.2) {
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
+}
+.whiteShadow(@opacity: 0.2) {
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
+    box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
+    
+}
+.hidden() {
+    display: none;
+}
+
+
+/**
+ * 3 - Fonty
+ */
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: normal;
+    src: url('@{font-folder}ProximaNova-Regular.otf');
+}
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: lighter;
+    src: url('@{font-folder}ProximaNova-Light.otf');
+}
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: bold;
+    src: url('@{font-folder}ProximaNova-Semibold.otf');
+}
+
+/**
+ * 4 - Formátování textu
+ */
+/**
+ * 4.1 - Nadpisy
+ */
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    width: 100%;
+}
+
+h1 {
+    color: white;
+    font-weight: lighter;
+    margin: 0;
+    
+    @media screen {
+        @media(min-width: 0px) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+        @media(min-width: 800px) {
+            font-size: 60px;
+            line-height: 60px;
+        }
+        @media(min-width: 1000px) {
+            font-size: 70px;
+            line-height: 70px;
+        }
+        @media(min-width: 1200px) {
+            font-size: 80px;
+            line-height: 80px;
+        }
+    }
+}
+
+h2 {
+    margin: 50px 0;
+    text-align: center;
+    font-weight: lighter;
+    
+    font-size: 50px;
+    line-height: 50px;
+}
+
+h3 {
+    margin: 30px 0;
+    text-align: center;
+    font-weight: lighter;
+    
+    font-size: 35px;
+    line-height: 35px;
+    
+}
+
+h4 {
+    margin: 7px 0;
+    font-weight: lighter;
+    font-size: 25px;
+    line-height: 25px;
+}
+
+h5 {
+    margin: 7px 0;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/**
+ * 4.2 - Horizontální formátování
+ */
+p {
+    line-height: 20px;
+    min-height: 18px;
+}
+.justify,.justify-align {
+    text-align: justify;
+}
+.center,.center-align {
+    text-align: center;
+}
+.left,.left-align {
+    text-align: left;
+}
+.right,.right-align {
+    text-align: right;
+}
+.margin {
+    margin-bottom: 30px;
+}
+.indent {
+    text-indent: 50px;
+}
+
+/**
+ * 4.3 - Barvy
+ */
+
+.black-text {
+    color: #000;
+}
+.red-text {
+    color: @theme-color;
+}
+.white-text {
+    color: #fff;
+    
+}
+.light-grey-text {
+    color: @light-grey;
+    
+}
+.grey-text {
+    color: @grey;
+} 
+.dark-grey-text {
+    color: @dark-grey;
+}
+
+/**
+ * 4.4 - Velikosti
+ */
+.small,.small-font {
+    font-size: 14px;
+    line-height: 18px;
+}
+.medium,.medium-font {
+    font-size: 16px;
+    line-height: 20px;
+}
+.big,.big-font {
+    font-size: 20px; 
+    line-height: 24px;   
+}
+
+/**
+ * 4.5 - Styly
+ */
+.bold {
+    font-weight: bold;
+}
+.underline {
+    text-decoration: underline;
+}
+.italic {
+    font-style: italic;
+}
+
+.quote-layout {
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-left: 5px solid @theme-color;
+    background: #f8f8f8;
+}
+
+/**
+ * 4.6 - Předdefinované
+ */
+.description {
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/**
+ * 5 - Obecně používané třídy
+ */
+.cursor-pointer {
+    cursor: pointer;
+}
+/**
+ * 5.1 - Barvy pozadí
+ */
+.red {
+    background-color: @theme-color;
+}
+.white {
+    background-color: #fff;
+}
+.grey {
+    background-color: @light-grey;
+}
+.dark-grey {
+    background-color: @dark-grey;
+}
+.black {
+    background-color: #000;
+}
+
+/**
+ * 5.2 - Rozdělení stránky
+ */
+.third {
+    float: left;
+    width: 33.3333%;
+}
+.half {
+    float: left;
+    width: 50%;
+}
+
+.text-area {
+    margin: 20px;
+}
+
+
+/**
+ * 5.3 - Scrollbar
+ */
+.nicescroll-rails {
+    background: rgba(0,0,0,0.2);
+    width: 10px !important;
+
+}
+
+.nicescroll-rails div {
+    background: @theme-color !important;
+    width: 10px !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/**
+ * 5.4 - Progress bar
+ */
+.progress-bar {
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: @light-grey;
+    margin: 25px 0;
+    
+
+    div {
+        width: 0;
+        height: 50px;
+        background-color: @theme-color;
+        
+    }
+    
+    &.stripped > div {
+        background: repeating-linear-gradient(
+            45deg,
+            @theme-color,
+            @theme-color 10px,
+            @third 10px,
+            @third 20px
+        );        
+    }
+    
+    label {
+        padding: 15px;
+        display: inline-block;
+        font-size: 20px;
+        width: 300px; 
+    }
+}
+
+.progress-menu {
+    cursor: pointer;
+    li {
+        margin-bottom: 10px;
+        &.done {
+            color: @green;
+        }
+        &.processing {
+            color: @yellow;
+        }
+        &.waiting {
+            color: @dark-grey;
+        }
+        
+    }
+}
+
+.fa-li { position: relative !important;}
+/** 
+ * 5.5 - TIMELINE
+ */
+
+.timeline {
+  position: relative;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 1em 0;
+  list-style-type: none;
+  max-height: 500px;
+  overflow: auto;
+  box-sizing: border-box;
+  background: url( "@{img-folder}ticket-bar.png" ) center center no-repeat;
+
+    li {
+      padding: 1em 0;
+    }
+
+    li:after {
+      content: "";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+}
+.direction-l {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: right;
+  
+  .flag {
+    -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    &:after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      height: 0;
+      width: 0;
+      margin-top: -8px;
+      border: solid transparent;
+      border-left-color: transparent;
+      border-width: 8px;
+      pointer-events: none;
+    }
+  }
+  .time-wrapper {
+    float: left;
+  }
+}
+
+.direction-r {
+  position: relative;
+  width: 300px;
+  float: right;
+  
+  .flag {
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+    &:after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      height: 0;
+      width: 0;
+      margin-top: -8px;
+      border: solid transparent;
+      border-right-color: transparent;
+      border-width: 8px;
+      pointer-events: none;
+    }
+    &:before {
+      left: -40px;
+    }
+  }
+  .time-wrapper {
+    float: right;
+  }
+  .desc {
+    margin: 1em 0 0 0.75em;
+  }
+}
+
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  
+  text-align: center;
+}
+
+.flag {
+  position: relative;
+  display: inline;
+  background: rgb(248,248,248);
+  padding: 6px 10px;
+  border-radius: 5px;
+  
+  font-weight: 600;
+  text-align: left;
+  
+  &.high-importance {   
+    background: @theme-color;
+    color: @light-grey;
+  }
+  &.low-importance {
+    color: #aaa;
+  }
+}
+
+.direction-l .flag:before,
+.direction-r .flag:before {
+  position: absolute;
+  top: 50%;
+  right: -41px;
+  content: ' ';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 4px solid @theme-color;
+  z-index: 10;
+  
+ 
+}
+.flag.resolvable:hover:before, .flag.resolved:before {
+   cursor: pointer;
+   border-color: @green;
+ }
+ .flag.resolved:hover:before {
+   cursor: pointer;
+   border-color: @theme-color;     
+ }
+.time-wrapper {
+  display: inline;
+  
+  line-height: 1em;
+  font-size: 0.66666em;
+  color: @theme-color;
+  vertical-align: middle;
+  
+  &.clickable {
+      cursor: pointer;
+      &:hover {
+          color: @dark-grey;
+          & > span {
+            text-indent: -9999px;
+            line-height: 0;
+            &:after {
+                text-indent: 0px;
+                line-height: initial;
+                display: block;
+                content: 'Assign to me!'; 
+            }
+          }
+      }
+  }
+}
+.time {
+  display: inline-block;
+  padding: 4px 6px;
+  background: rgb(248,248,248);
+}
+
+.desc {
+  margin: 1em 0.75em 0 0;
+  
+  font-size: 0.77777em;
+  font-style: italic;
+  line-height: 1.5em;
+}
+
+/**
+ * 5.6 - Ostatní
+ */
+[class^='img-'] { position: absolute; z-index: -1; }
+
+img.bordered {
+    padding: 10px;
+    box-sizing: border-box;
+    .shadow(1);
+    .gradient( @secondary , @theme-color )
+}
+img.shadowed {
+    width: 90%;
+    margin: 0 5%;
+    .shadow(1);    
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background: #333;
+    background-image: linear-gradient(to right, @theme-color, #fff );
+}
+
+.shadow {
+    .shadow(0.3);
+}
+
+/**
+ * 6 - Ikony
+ */
+
+[class^='icon-big'] {
+    width: 32px; height: 32px;
+    display: block;
+    float: right;
+    cursor: pointer
+}
+[class^='icon-small'] {
+    width: 16px; height: 16px;
+    display: block;
+    float: right;
+    cursor: pointer
+}
+.icon-big {
+    &-fb { 
+        background: url( "@{img-folder}icons/facebook.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/facebook-hover.png" );
+        }
+    }
+    &-twitter { 
+        background: url( "@{img-folder}icons/twitter.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/twitter-hover.png" );
+        }
+    }
+}
+.icon-small {
+    &-edit { 
+        background: url( "@{img-folder}icons/pen.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/pen-hover.png" );
+        }
+    }
+    &-cross { 
+        background: url( "@{img-folder}icons/cross.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/cross-hover.png" );
+        }
+    }
+}
+
+ 
+/**
+ * 7 - Zprávy
+ */
+.message {
+    width: 50%;
+    padding: 40px 100px;
+    margin: auto;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    position: fixed; top: 100px; left: 0; right: 0;
+    z-index: 1000;
+    display: inline-block;
+    
+    .shadow(0.5);
+}
+.success {
+    .gradient(green, green);
+}
+.notice {
+    .gradient(yellow, yellow);
+}
+.error { 
+    .gradient(@theme-color, @secondary);
+}
+
+/**
+ * 8 - Optimalizace pro tisk
+ */
+@media print {
+  * {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
