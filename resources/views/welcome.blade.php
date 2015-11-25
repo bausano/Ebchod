@@ -33,12 +33,16 @@
             .title {
                 font-size: 96px;
             }
+            
+            .red {
+                color: red;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">I <span class='red'><3</span> Laravel</div>
             </div>
         </div>
     </body>
