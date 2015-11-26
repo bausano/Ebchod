@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App;
 
 class ProductsController extends Controller
 {
@@ -16,7 +17,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products = App\Product::all();    
+
+        return \View::make('products', [
+            'products' => $products,
+        ]);
     }
 
     /**
