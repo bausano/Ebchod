@@ -12,7 +12,14 @@ class Shops extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('shops', function (Blueprint $table) {
+            $table->increments('id')->unique();
+            $table->string('name');
+            $table->mediumText('description');
+            $table->string('url', 250);
+            $table->string('affiliate', 100);
+        });
+    }
     }
 
     /**
@@ -22,6 +29,6 @@ class Shops extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('shops');
     }
 }

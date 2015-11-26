@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -10,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Libraries\HeurekaImporter;
 
-class XMLfeedController extends Controller
+class XmlFeedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,8 +32,10 @@ class XMLfeedController extends Controller
         ini_set('memory_limit', '2048M');
         ini_set('max_execution_time', 300);
 
-        $model = new HeurekaImporter();
         $xml = file_get_contents('https://www.bibloo.cz/_upload/heureka.php?cj');
+
+        $model = new HeurekaImporter();
+        $model->loadXml( $xml );
         
     }
 

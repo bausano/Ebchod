@@ -15,7 +15,7 @@ class HeurekaImporter
     	/**
     	 *	Formating XML structure of sent file
 		 */
-		$doc = new \DOaMDocument();
+		$doc = new \DOMDocument();
         $doc->loadXML( $xml );
 
         $elements = $doc->getElementsByTagName('SHOPITEM');
@@ -74,36 +74,34 @@ class HeurekaImporter
     {
     	foreach( $this->data as $column => $value )
     	{
-            switch( $child->nodeName )
+            switch( $column )
             {
                 case 'PARAM':
-
+                		$product->setParams( $value );
                 	break;
 
 				case 'IMGURL_ALTERNATIVE':
-                
+                	$product->setImages( $value );
                 	break;
 
                 default:
-                	$product->set(  );
+                	$product->set( $this->paramToColumn( $column ), $value );
             }
     	}
     }
 
     private function paramToColumn( $string )
     {
-
 		$heureka_params = [
             'ITEM_ID' => 'product_id',
             'ITEMGROUP_ID' => 'item_group',
             'PRODUCTNAME' => 'product_name',
             'PRODUCT' => 'display_name',
             'DESCRIPTION' => 'description',
-            '' => 'manufacturer',
-            '' => 'url',
-            '' => 'price',
-            '' => 'category',
-            '' => 'delivery_date',
+            'MANUFACTURER' => 'manufacturer',
+            'URL' => 'url',
+            'PRICE_VAT' => 'price',
+            'CATEGORYTEXT' => 'category',
             'GIFT' => 'gift',
         ];
 
