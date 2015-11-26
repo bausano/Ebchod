@@ -10,6 +10,19 @@ class HeurekaImporter
 {
 	private $data;
 
+    private $heureka_params = [
+        'ITEM_ID' => 'product_id',
+        'ITEMGROUP_ID' => 'item_group',
+        'PRODUCTNAME' => 'product_name',
+        'PRODUCT' => 'display_name',
+        'DESCRIPTION' => 'description',
+        'MANUFACTURER' => 'manufacturer',
+        'URL' => 'url',
+        'PRICE_VAT' => 'price',
+        'CATEGORYTEXT' => 'category',
+        'GIFT' => 'gift'
+    ];
+
     public function loadXml( $xml )
     { 
     	/**
@@ -46,12 +59,16 @@ class HeurekaImporter
                         case 'PARAM':
                             $main = $child->childNodes->item(0)->nodeValue;
                             $value = $child->childNodes->item(1)->nodeValue;
-                            $data[ $id ][ $child->nodeName ][] = [ $main => $value ];
+
+                            $data[ $id ][ $child->nodeName ][] = [ 'param' => $main, 'value' => $value ];
                             break;
 
+                        case 'IMGURL':
                         case 'IMGURL_ALTERNATIVE':
                             $url = $child->childNodes->item(0)->nodeValue;
-                            $data[ $id ][ $child->nodeName ][] = $url;
+                            $m = $child->nodeName == 'IMGURL' ? true : false;
+
+                            $data[ $id ][ $child->nodeName ][] = [ 'url' => $url, 'main' => $m ];
                             break;
 
                         default:
@@ -60,51 +77,37 @@ class HeurekaImporter
                 }
             }
         }
-        var_dump( $data );
 
         $this->data = $data;
     }
 
     public function getData()
     {
-    	return $this->xml;
+    	return $this->data;
     }
 
-    public function setProductData( Product $product )
+    public function saveProducts( )
     {
-    	foreach( $this->data as $column => $value )
-    	{
-            switch( $column )
-            {
-                case 'PARAM':
-                		$product->setParams( $value );
-                	break;
+        foreach( $this->data as $item )
+        {
+            $product = new Product();
+        	foreach( $item as $column => $value )
+        	{
+                switch( $column )
+                {
+                    case 'PARAM':
+                    	$product->setParams( $value );
+                    	break;
 
-				case 'IMGURL_ALTERNATIVE':
-                	$product->setImages( $value );
-                	break;
+    				case 'IMGURL_ALTERNATIVE':
+                    	$product->setImages( $value );
+                    	break;
 
-                default:
-                	$product->set( $this->paramToColumn( $column ), $value );
-            }
-    	}
-    }
-
-    private function paramToColumn( $string )
-    {
-		$heureka_params = [
-            'ITEM_ID' => 'product_id',
-            'ITEMGROUP_ID' => 'item_group',
-            'PRODUCTNAME' => 'product_name',
-            'PRODUCT' => 'display_name',
-            'DESCRIPTION' => 'description',
-            'MANUFACTURER' => 'manufacturer',
-            'URL' => 'url',
-            'PRICE_VAT' => 'price',
-            'CATEGORYTEXT' => 'category',
-            'GIFT' => 'gift',
-        ];
-
-    	return $heureka_params [ $string ];
+                    default:
+                    	$product->set( $this->heureka_params( $column ), $value );
+                }
+        	}
+            $product->save();
+        }
     }
 }
