@@ -37,6 +37,7 @@ class XmlFeedController extends Controller
         $model = new HeurekaImporter();
         $model->loadXml( $xml );
         
+        $model->saveProducts();
     }
 
     /**
