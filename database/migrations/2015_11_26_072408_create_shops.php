@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Shops extends Migration
+class CreateShopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,6 @@ class Shops extends Migration
             $table->string('url', 250);
             $table->string('affiliate', 100);
         });
-    }
     }
 
     /**
