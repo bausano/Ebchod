@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-   public function image()
+   public function images()
    {
    		return $this->hasMany("App\Image");
+   }
+
+   public function params()
+   {
+   		return $this->hasMany("App\Param");
    }
 
    public function shop()
