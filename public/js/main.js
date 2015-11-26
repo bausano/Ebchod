@@ -1,0 +1,5 @@
+/* 
+ * Variables
+ */
+
+//var _URL = "/";
