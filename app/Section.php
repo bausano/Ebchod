@@ -12,4 +12,9 @@ class Section extends Model
     {
     	return $this->hasMany('App\Product');
     }
+
+    public function parent( )
+    {
+    	return $this->belongsTo('App\Section', 'parent_id', 'id');
+    }
 }
