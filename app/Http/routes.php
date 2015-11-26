@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('xmlheureka', 'XMLfeedController@heurekaImport');
+Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
-use Library\Product;
+Route::get('test', function() {
+	$p = new App\Libraries\Product;
+	$p->product_id = 1;
+	$p->shop_id = 243;
+	$p->set("product_name", "test");
 
-Route::get('test',function() {
-	$product = new Product();
+	$p->save();
 });
