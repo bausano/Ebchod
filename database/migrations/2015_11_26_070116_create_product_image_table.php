@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProductImageTable extends Migration
+class ImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class ProductImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_images', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->string('item_id');
+            $table->integer('product_id');
             $table->string('url', 250);
 
             $table->timestamps();
@@ -28,6 +28,6 @@ class ProductImageTable extends Migration
      */
     public function down()
     {
-        Schema::drop('products_images');
+        Schema::drop('images');
     }
 }

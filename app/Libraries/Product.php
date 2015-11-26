@@ -10,7 +10,7 @@ use App\Product as ProductModel;
 class Product
 {
 	public $id;
-	public $product_id;
+	public $item_id;
 	public $shop_id;
 
 	private $data = [];
@@ -26,24 +26,43 @@ class Product
 	}
 
 	/**
+	 * setting params
+	 * @param params array of params
+	 */
+	public function setParams( $params )
+	{
+		$this->params = $params;
+	}
+
+	/**
+	 * setting params
+	 * @param params array of params
+	 */
+	public function setImages( $images )
+	{
+		$this->images = $images;
+	}
+
+	/**
 	 * Save product to database
 	 */
 	public function save()
 	{
-		try 
-		{
-			ProductModel::where('shop_id', '=', $this->shop_id, 'and', 'product_id', '=', $this->product_id )->update( $this->data );
-		}
-		catch( \QueryException $e )
-		{
+		$data = [
+			'item_id' => $this->item_id,
+			'shop_id'	 => $this->shop_id,
+		] + $this->data;
 
-			$data = [
-				'product_id' => $this->product_id,
-				'shop_id'	 => $this->shop_id,
-			] + $this->data;
-
-			ProductModel::insert( $data );
+		if( !ProductModel::where('shop_id', $this->shop_id)->where('item_id', $this->item_id )->update( $this->data ) && 
+			!ProductModel::insert( $data ) )
+		{
+			return false;
 		}
 
+		$this->id = ProductModel::where('shop_id', $this->shop_id)
+								->where('item_id', $this->item_id )
+								->first()->id;
+
+		return false;
 	}
 }

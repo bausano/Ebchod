@@ -19,9 +19,9 @@ Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
 Route::get('test', function() {
 	$p = new App\Libraries\Product;
-	$p->product_id = 1;
+	$p->item_id = 1;
 	$p->shop_id = 243;
-	$p->set("product_name", "test");
+	$p->set("product_name", "testxxx");
 
 	$p->save();
 });
