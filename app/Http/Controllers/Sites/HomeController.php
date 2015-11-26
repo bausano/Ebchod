@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sites;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SiteController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class SiteController extends Controller
     public function index()
     {
         
-        return \View::make('index', [
+        return \View::make('home', [
             'test' => 'test',
         ]);  
     }

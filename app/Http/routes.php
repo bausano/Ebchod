@@ -12,10 +12,38 @@
 */
 
 /**
- * Page routes
+ * 1 - Page routes
  */
-Route::get('/', 'SiteController@index');
+Route::group(['namespace' => 'Sites'], function() {
 
+	/* 1.1 - Index page */
+	Route::get('', 'HomeController@index');
+
+	/* 1.2 - Products */
+	Route::group(['prefix' => 'products'], function() {
+		Route::get('', 'ProductsController@index');
+		Route::get('detail/{id}/{name?}', 'ProductsController@show');
+	});
+
+	/* 1.3 - Blog */
+	Route::group(['prefix' => 'blog'], function() {
+		Route::get('', 'BlogController@index');
+		Route::get('add', 'BlogController@create');
+		Route::post('add', 'BlogController@store');
+		Route::post('delete', 'BlogController@destroy');
+		Route::get('edit', 'BlogController@edit');
+		Route::post('edit', 'BlogController@update');
+	});
+
+});
+//
+//
+//
+
+
+/*****************************************************************
+ *			Testing zone 									     *
+ *****************************************************************/
 
 /**
  * XmlImport Routes
@@ -27,4 +55,5 @@ Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
 
 Route::get('test', function() {
+
 });
