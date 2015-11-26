@@ -36,9 +36,7 @@ class XmlFeedController extends Controller
         $xml = file_get_contents('http://www.willsoor.cz/exml/export_heureka_cz.xml');
 
         $model = new HeurekaImporter();
-        $model->loadXml( $xml );
-
-        $model->saveProducts();
+        $model->uploadProducts( $xml );
     }
 
     /**

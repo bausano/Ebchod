@@ -2,6 +2,7 @@
 
 namespace App\Libraries;
 
+use App;
 /**
  *	A class for parsing heureka-like xml feed 
  */
@@ -20,10 +21,12 @@ class HeurekaImporter
         'URL' => 'url',
         'PRICE_VAT' => 'price',
         'CATEGORYTEXT' => 'section_id',
-        'GIFT' => 'gift'
+        'GIFT' => 'gift',
+        'VARIATIONS' => 'variations',
+        'SHOP_ID' => 'shop_id'
     ];
 
-    public function loadXml( $xml )
+    public function uploadProducts( $xml )
     { 
     	/**
     	 *	Formating XML structure of sent file
@@ -32,75 +35,161 @@ class HeurekaImporter
         $doc->loadXML( $xml );
 
         $elements = $doc->getElementsByTagName('SHOPITEM');
-        $data = array();
-
+        $data = array( 'IMGURLS' => [], 'SHOP_ID' => 1 );
+        $item_groups = array( );
         /**
 		 *	Getting a data of every shop item in feed
          */
         foreach($elements as $node)
         {
-            $id = trim( $node->getElementsByTagName('ITEM_ID')->item(0)->nodeValue );
-            foreach($node->childNodes as $child) {
+            foreach($node->childNodes as $child)
+            {
                 if( trim( $child->nodeValue ) != '' )
                 {
                     switch( $child->nodeName )
                     {
-                        case 'DELIVERY':
-                        case 'VIDEO_URL':
-                        case 'ITEM_TYPE':
-                        case 'EAN':
-                        case 'ISBN':
-                        case 'HEUREKA_CPC':
-                        case 'DELIVERY_DATE':
-                        case 'ACCESSORY':
-                        case 'DUES':
-                        	break;
-
-                        case 'PARAM':
-                            $main = $child->childNodes->item(0)->nodeValue;
-                            $value = $child->childNodes->item(1)->nodeValue;
-
-                            $data[ $id ][ $child->nodeName ][] = [ 'param' => $main, 'value' => $value ];
+                        case 'ITEM_ID':
+                        case 'ITEMGROUP_ID':
+                        case 'PRODUCTNAME':
+                        case 'PRODUCT':
+                        case 'DESCRIPTION':
+                        case 'MANUFACTURER':
+                        case 'URL':
+                        case 'PRICE_VAT':
+                        case 'CATEGORYTEXT':
+                        case 'GIFT':
+                            $data[ $child->nodeName ] = $child->nodeValue;
                             break;
+
+                        /*case 'PARAM':
+                            $main = $child->getElementsByTagName( 'PARAM_NAME' )->item(0)->nodeValue;
+                            $value = $child->getElementsByTagName( 'VAL' )->item(0)->nodeValue;
+                            $data[ $child->nodeName ][] = [ 'param' => $main, 'value' => $value ];
+                            break;*/
 
                         case 'IMGURL':
                         case 'IMGURL_ALTERNATIVE':
-                            $url = $child->childNodes->item(0)->nodeValue;
-                            $m = $child->nodeName == 'IMGURL' ? true : false;
+                            if( count( $data[ 'IMGURLS' ] < 2 ) )
+                            {
+                                $url = $child->childNodes->item(0)->nodeValue;
+                                $m = $child->nodeName == 'IMGURL' ? true : false;
 
-                            $data[ $id ][ 'IMGURLS' ][] = [ 'url' => $url, 'main' => $m ];
+                                $data[ 'IMGURLS' ][] = [ 'url' => $url, 'main' => $m ];
+                            }
                             break;
-
+                        
                         case 'CATEGORYTEXT':
-                            $data[ $id ][ 'CATEGORYTEXT' ] = Section::parse( $child->nodeValue );
+                            $data[ 'CATEGORYTEXT' ] = Section::parse( $child->nodeValue );
                             break;
-                        default:
-                            $data[ $id ][ $child->nodeName ] = $child->nodeValue;
+
+                        default: continue;
                     }
                 }
             }
+
+            /**
+             *  IF#1
+             *  Checks if the product has variations
+             */
+            if( isset( $data[ 'ITEMGROUP_ID' ] ) )
+            {
+                /**
+                 *  IF#2
+                 *  Checks if it is the very first occurence of item group
+                 */
+                if( isset( $item_groups [ $data[ 'ITEMGROUP_ID' ] ] ) )
+                {
+                    /**
+                     *  IF#3
+                     *  If there is already one product of this item group in DB
+                     *  scripts increments number of variations it has by one.
+                     */
+                    if( !$item_groups [ $data[ 'ITEMGROUP_ID' ] ][ 'id' ]  === false ) {
+                        $id = App\Product::  where( 'shop_id' , $data[ 'SHOP_ID' ] )
+                                ->where( 'item_id' , $item_groups [ $data[ 'ITEMGROUP_ID' ] ]['id'] )
+                                ->value('id');
+
+                        App\Product::  where( 'shop_id' , $data[ 'SHOP_ID' ] )
+                                        ->where( 'item_id' , $item_groups [ $data[ 'ITEMGROUP_ID' ] ]['id'] )
+                                        ->increment('variations');
+                        /**
+                         *  IF#4
+                         *  Saving new product picture to the DB.
+                         */
+                        if( isset( $data[ 'IMGURLS' ] ) && count( $data[ 'IMGURLS' ] ) > 0 )
+                        {
+                            App\Image::insert( [ 'product_id' => $id, 'url' => $data[ 'IMGURLS' ][0]['url'], 'main' => 0 ] );
+                        }
+                    /**
+                     *  Since there is not a single product of this 
+                     *  item group in db, we have to create one.
+                     */
+                    } else {
+                        /**
+                         *  IF#5
+                         *  If there is not a single avaible image, we increment group variations.
+                         */
+                        if( count( $data[ 'IMGURLS' ] ) < 1 )
+                        {
+                            $item_groups [ $data[ 'ITEMGROUP_ID' ] ][ 'count' ]++;
+                        }
+                        /**
+                         *  The conditions for a new product were fulfilled
+                         *  thus the script is storing the product with appropriate number of variations
+                         */
+                        else
+                        {
+                            $data[ 'VARIATIONS' ] = $item_groups [ $data[ 'ITEMGROUP_ID' ] ][ 'count' ];
+                            $item_groups [ $data[ 'ITEMGROUP_ID' ] ][ 'id' ] = $data[ 'ITEM_ID' ];
+                            $this->saveProduct( $data );
+                        }
+                    }
+                }
+                else 
+                {
+                    /**
+                     *  If there was no variation for this item group ID found before
+                     *  script creates a note in item_group array.
+                     */
+                    $set = count ( $data[ 'IMGURLS' ] ) > 0 ? $data['ITEM_ID'] : false ;
+                    $item_groups [ $data[ 'ITEMGROUP_ID' ] ] = [ 'count' => 0, 'id' => $set ];
+                    /**
+                     *  IF#6
+                     *  Script won't save product unless it has at least one image avaible.
+                     */
+                    if( !$set === false )
+                    {
+                        $this->saveProduct( $data );
+                    }
+                }
+            }
+            else 
+            {
+                /**
+                 *  IF#7
+                 *  Products without variations and with avaible images are stored.
+                 */
+                if( count( $data[ 'IMGURLS' ] ) > 0 )
+                {
+                    $this->saveProduct( $data );
+                }
+            }
+
+            $data = array( 'IMGURLS' => [], 'SHOP_ID' => 1 );
         }
-        
-        $this->data = $data;
     }
 
-    public function getData()
+    private function saveProduct( $item )
     {
-    	return $this->data;
-    }
-
-    public function saveProducts( )
-    {
-        foreach( $this->data as $item )
-        {
             $product = new Product();
+
         	foreach( $item as $column => $value )
         	{
                 switch( $column )
                 {
-                    case 'PARAM':
+                    /*case 'PARAM':
                     	$product->setParams( $value );
-                    	break;
+                    	break;*/
 
     				case 'IMGURLS':
                     	$product->setImages( $value );
@@ -108,7 +197,10 @@ class HeurekaImporter
 
                     case 'ITEM_ID':
                         $product->item_id = $value;
-                        $product->shop_id = 1;
+                        break;
+
+                    case 'SHOP_ID':
+                        $product->shop_id = $value;
                         break;
 
                     default:
@@ -116,6 +208,5 @@ class HeurekaImporter
                 }
         	}
             $product->save();
-        }
     }
 }
