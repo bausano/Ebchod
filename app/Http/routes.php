@@ -14,9 +14,7 @@
 /**
  * Page routes
  */
-Route::get('/', function () {
-    return view('index');
-}) ;
+Route::get('/', 'SiteController@index');
 
 
 /**
@@ -29,4 +27,4 @@ Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
 
 Route::get('test', function() {
-}) ;
+});
