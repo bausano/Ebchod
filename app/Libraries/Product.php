@@ -5,8 +5,6 @@
 
 namespace App\Libraries;
 
-use App\Product as ProductModel;
-
 class Product
 {
 	public $id;
@@ -53,16 +51,30 @@ class Product
 			'shop_id'	 => $this->shop_id,
 		] + $this->data;
 
-		if( !ProductModel::where('shop_id', $this->shop_id)->where('item_id', $this->item_id )->update( $this->data ) && 
-			!ProductModel::insert( $data ) )
-		{
+		if( !App\Product::where('shop_id', $this->shop_id)->where('item_id', $this->item_id )->update( $this->data ) && 
+			!App\Product::insert( $data ) )
 			return false;
-		}
 
-		$this->id = ProductModel::where('shop_id', $this->shop_id)
+		$this->id = App\Product::where('shop_id', $this->shop_id)
 								->where('item_id', $this->item_id )
 								->first()->id;
 
+		if( !$this->id )
+			¨return false;
+
+		foreach( $this->images as $image )
+		{	
+			if( !App\Image::find( $this->id ) ->update( $image ) && 
+				!App\Image::insert( $data ) )
+				return false;
+		}
+
+		foreach( $this->params as $param )
+		{
+			if( !App\Param::find( $this->id ) ->update( $param ) && 
+				!App\Param::insert( $data ) )
+				return false;
+		}
 		return false;
 	}
 }
