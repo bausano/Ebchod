@@ -18,5 +18,5 @@ Route::get('/', function () {
 Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
 Route::get('test', function() {
-	$data = App\Libraries\Loader::load();
+	App\Libraries\Section::parse("1 | 2 | 4");
 });
