@@ -1,5 +1,11 @@
 /* 
- * Variables
+ * onLoad
  */
 
-//var _URL = "/";
+$(document).ready(function() {
+    $(window).load(function() {
+        $('.grid').masonry({
+            itemSelector: '.grid-item'
+        }).masonry('reloadItems');
+    });
+});

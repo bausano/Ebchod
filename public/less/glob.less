@@ -75,11 +75,23 @@ img {
 	width: 100%;
 }
 
-/* 1.3 - Setting up a gid system */
-.grid, .col {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+/* 1.3 - Setting up a grid system */
+[class^='row'] {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.row {
+	&-90 { width: 90%; }
+	&-80 { width: 80%; }
+	&-70 { width: 70%; }
+	&-60 { width: 60%; }
+}
+
+[class^='col'] {
+	float: left;
 }
 
 .col {
@@ -98,7 +110,7 @@ img {
 }
 
 .area {
-	padding: 1%;
+	padding: 2%;
 }
 
 /*
@@ -149,37 +161,37 @@ h6 {
 }
 
 h1 {
-	margin: 0 20px;
+	margin: 20px0;
 	font-size: 60px;
 	line-height: 72px;
 }
 
 h2 {
-	margin: 0 15px;
+	margin: 15px 0;
 	font-size: 50px;
 	line-height: 60px;
 }
 
 h3 {
-	margin: 0 10px;
+	margin: 10px;
 	font-size: 35px;
 	line-height: 42px;
 }
 
 h4 {
-	margin: 0 5px;
+	margin: 5px 0;
 	font-size: 30px;
 	line-height: 36px;
 }
 
 h5 {
-	margin: 0 5px;
+	margin: 5px 0;
 	font-size: 25px;
 	line-height: 30px;
 }
 
 h6 {
-	margin: 0 5px;
+	margin: 5px 0;
 	font-size: 20px;
 	line-height: 24px;
 }
@@ -225,6 +237,7 @@ quote {
 .white-bg { background-color: #fff; }
 .grey-bg { background-color: @light-grey; }
 .dark-grey-bg { background-color: @dark-grey; }
+.almost-black-bg { background-color: #222; }
 
 /* 3.2 - Image scroll*/
 [class^='img-'] { position: absolute; z-index: -1; }
@@ -307,4 +320,48 @@ quote {
 			}
 		}
 	}
+}
+
+.product {
+	background: #f8f8f8;
+	overflow: hidden;
+	display: block;
+	cursor: pointer;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	
+	.shadow(0.2);
+	.animate();
+
+	&:hover {
+		.shadow(0.6;)
+	}
+}
+
+article {
+	background: #282828;
+	overflow: hidden;
+	display: block;
+	cursor: pointer;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	
+	.shadow(0.2);
+	.animate();
+
+	&:hover {
+		.shadow(0.6;)
+	}
+}
+
+.footer {
+	//border-top: 5px solid @theme;
 }
