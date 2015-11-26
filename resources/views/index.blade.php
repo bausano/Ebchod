@@ -13,13 +13,14 @@
     </head>
     <body>
         <div class="row header">
-            <div class="img-header" data-image="http://thumbs.dreamstime.com/z/young-woman-happy-smiling-harmony-nature-sun-light-outdoor-lifestyle-travel-autumn-forest-background-46171945.jpg" data-width="1300" data-height="955"></div>
+            <div class="img-header" data-image="/img/banner.png" data-width="1300" data-height="865"></div>
             <div class="col-12">
                 <nav>
-                    <a href="">Nejnovější zboží</a>
-                    <a href="">Kategorie</a>
-                    <a href="">Články</a>
+                    <a class="logo" href="/"><img src="/img/logo-60.png" alt="Logo"></a>
                     <a href="">Spolupráce</a>
+                    <a href="">Články</a>
+                    <a href="">Kategorie</a>
+                    <a href="">Nejnovější zboží</a>
                 </nav>
                 <div class="motto">
                     <h1 class="center light light-grey-text">Nejširší škála zboží na jednom místě</h1>
@@ -32,7 +33,14 @@
                     <div class="settings"></div>
                     <div class="autocomplete"></div>
 
-                    <p class="small italic light-grey-text">Oblíbené: Dlouhé umělé penisy</p>
+                    <p class="small italic light-grey-text">Oblíbené: Kočárky</p>
+                </div>
+            </div>
+        </div>
+        <div class="row content white-bg" style="height: 600px;">
+            <div class="col-12">
+                <div class="area">
+                    <h3 class="center theme-text">Welcome!</h3>
                 </div>
             </div>
         </div>
