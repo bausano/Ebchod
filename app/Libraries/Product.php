@@ -5,6 +5,8 @@
 
 namespace App\Libraries;
 
+use App;
+
 class Product
 {
 	public $id;
