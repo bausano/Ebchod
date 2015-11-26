@@ -6,6 +6,11 @@ use App;
 
 class Section
 {
+	/**
+	 * Builds section hierarchy
+	 * @param string sections in string
+	 * @return int current section id
+	 */
 	public static function parse( $string )
 	{
 		foreach( ( $sections = explode( " | ", $string ) ) as $index=>$sectionName )
@@ -14,5 +19,6 @@ class Section
 			$section = App\Section::firstOrNew( [ 'name' => $sectionName , 'parent_id' => $parent ] );
 			$section->save();			
 		}
+		return $section->id;
 	}	
 }
