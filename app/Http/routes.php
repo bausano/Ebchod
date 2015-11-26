@@ -16,7 +16,7 @@
  */
 Route::get('/', function () {
     return view('welcome');
-});
+}) ;
 
 
 /**
@@ -29,6 +29,4 @@ Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
 
 
 Route::get('test', function() {
-	$product = App\Product::find(1);
-	var_dump( $product->section->parent->parent );
-});
+}) ;
