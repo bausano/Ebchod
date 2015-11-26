@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Libraries\HeurekaImporter;
+
 class XMLfeedController extends Controller
 {
     /**
@@ -29,9 +31,10 @@ class XMLfeedController extends Controller
     {
         ini_set('memory_limit', '2048M');
         ini_set('max_execution_time', 300);
-        $xml = file_get_contents('https://www.bibloo.cz/_upload/heureka.php?cj');
+        $model = new HeurekaImporter();
+        /*$xml = file_get_contents('https://www.bibloo.cz/_upload/heureka.php?cj');
 
-        $doc = new \DOMDocument();
+        $doc = new \DOaMDocument();
         $doc->loadXML( $xml );
         $pokus = $doc->childNodes->item(0);
         $elements = $doc->getElementsByTagName('SHOPITEM');
@@ -59,7 +62,7 @@ class XMLfeedController extends Controller
                 }
             }
         }
-        var_dump( $data );
+        var_dump( $data );*/
     }
 
     /**
