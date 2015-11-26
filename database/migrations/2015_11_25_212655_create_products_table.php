@@ -14,11 +14,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->smallInteger('shop');
+            $table->smallInteger('shop_id');
             $table->string('product_id');
             $table->string('item_group');
             $table->string('product_name');
-            $table->string('product_showed_name');
+            $table->string('display_name');
             $table->mediumText('description');
             $table->string('manufacturer', 200);
             $table->string('url', 250);
@@ -27,7 +27,6 @@ class CreateProductsTable extends Migration
             $table->integer('category');
             $table->string('delivery_date', 30);
             $table->boolean('gift');
-            $table->tinyInteger('rating');
 
             $table->timestamps();
         });
