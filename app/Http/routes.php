@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('xmlheureka', 'XMLfeedController@heurekaImport');
+
+use Library\Product;
+
+Route::get('test',function() {
+	$product = new Product();
+});

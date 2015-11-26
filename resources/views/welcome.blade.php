@@ -17,6 +17,7 @@
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato';
+
             }
 
             .container {
@@ -43,7 +44,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">I <span class='red'><3</span> Laravel</div>
-            </div>
+            </div>   
         </div>
     </body>
 </html>
