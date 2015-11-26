@@ -60,7 +60,7 @@ class Product
 								->first()->id;
 
 		if( !$this->id )
-			¨return false;
+			return false;
 
 		foreach( $this->images as $image )
 		{	
