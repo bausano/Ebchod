@@ -30,13 +30,14 @@ class XmlFeedController extends Controller
     public function heurekaImport()
     {
         ini_set('memory_limit', '2048M');
-        ini_set('max_execution_time', 300);
+        ini_set('max_execution_time', 1000);
 
-        $xml = file_get_contents('https://www.bibloo.cz/_upload/heureka.php?cj');
+        //$xml = file_get_contents('https://www.bibloo.cz/_upload/heureka.php?cj');
+        $xml = file_get_contents('http://www.willsoor.cz/exml/export_heureka_cz.xml');
 
         $model = new HeurekaImporter();
         $model->loadXml( $xml );
-        
+
         $model->saveProducts();
     }
 

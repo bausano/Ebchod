@@ -71,14 +71,16 @@ class HeurekaImporter
                             $data[ $id ][ 'IMGURLS' ][] = [ 'url' => $url, 'main' => $m ];
                             break;
 
+                        case 'CATEGORYTEXT':
+                            $data[ $id ][ 'CATEGORYTEXT' ] = Section::parse( $child->nodeValue );
+                            break;
                         default:
                             $data[ $id ][ $child->nodeName ] = $child->nodeValue;
                     }
                 }
             }
-            break;
         }
-
+        
         $this->data = $data;
     }
 
