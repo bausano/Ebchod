@@ -50,7 +50,7 @@ class Product
 	{
 		$data = [
 			'item_id' => $this->item_id,
-			'shop_id'	 => $this->shop_id,
+			'shop_id'	 => /*$this->shop_id*/1,
 		] + $this->data;
 
 		if( !App\Product::where('shop_id', $this->shop_id)->where('item_id', $this->item_id )->update( $this->data ) && 
@@ -66,17 +66,17 @@ class Product
 
 		foreach( $this->images as $image )
 		{	
-			if( !App\Image::find( $this->id ) ->update( $image ) && 
-				!App\Image::insert( $data ) )
+			if( !App\Image::where( 'url', $image['url'] )->update( $image ) && 
+				!App\Image::insert( $image ) )
 				return false;
 		}
 
 		foreach( $this->params as $param )
 		{
-			if( !App\Param::find( $this->id ) ->update( $param ) && 
-				!App\Param::insert( $data ) )
+			if( !App\Param::where( 'param', $param['param'] )->update( $param ) && 
+				!App\Param::insert( $param ) )
 				return false;
 		}
-		return false;
+		return true;
 	}
 }

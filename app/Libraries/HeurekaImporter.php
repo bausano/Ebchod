@@ -10,8 +10,8 @@ class HeurekaImporter
 {
 	private $data;
 
-    private $heureka_params = [
-        'ITEM_ID' => 'product_id',
+    private $paramsToColumns = [
+        'ITEM_ID' => 'item_id',
         'ITEMGROUP_ID' => 'item_group',
         'PRODUCTNAME' => 'product_name',
         'PRODUCT' => 'display_name',
@@ -19,7 +19,7 @@ class HeurekaImporter
         'MANUFACTURER' => 'manufacturer',
         'URL' => 'url',
         'PRICE_VAT' => 'price',
-        'CATEGORYTEXT' => 'category',
+        'CATEGORYTEXT' => 'section_id',
         'GIFT' => 'gift'
     ];
 
@@ -68,7 +68,7 @@ class HeurekaImporter
                             $url = $child->childNodes->item(0)->nodeValue;
                             $m = $child->nodeName == 'IMGURL' ? true : false;
 
-                            $data[ $id ][ $child->nodeName ][] = [ 'url' => $url, 'main' => $m ];
+                            $data[ $id ][ 'IMGURLS' ][] = [ 'url' => $url, 'main' => $m ];
                             break;
 
                         default:
@@ -76,6 +76,7 @@ class HeurekaImporter
                     }
                 }
             }
+            break;
         }
 
         $this->data = $data;
@@ -99,12 +100,17 @@ class HeurekaImporter
                     	$product->setParams( $value );
                     	break;
 
-    				case 'IMGURL_ALTERNATIVE':
+    				case 'IMGURLS':
                     	$product->setImages( $value );
                     	break;
 
+                    case 'ITEM_ID':
+                        $product->item_id = $value;
+                        $product->shop_id = 1;
+                        break;
+
                     default:
-                    	$product->set( $this->heureka_params( $column ), $value );
+                    	$product->set( $this->paramsToColumns[ $column ], $value );
                 }
         	}
             $product->save();

@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('url', 250);
             $table->decimal('price', 8, 2);
             $table->smallInteger('currency');
-            $table->integer('category');
+            $table->integer('section_id');
             $table->string('delivery_date', 30);
             $table->boolean('gift');
 
