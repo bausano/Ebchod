@@ -118,7 +118,18 @@ class HeurekaImporter
                          */
                         if( isset( $data[ 'IMGURLS' ] ) && count( $data[ 'IMGURLS' ] ) > 0 )
                         {
-                            App\Image::insert( [ 'product_id' => $id, 'url' => $data[ 'IMGURLS' ][0]['url'], 'main' => 0 ] );
+                            /**
+                             *  IF#5
+                             *  We don't want to have multiple rows with same url in our DB
+                             */
+                            if( App\Image::select('id')
+                                    ->where( 'product_id', $id )
+                                    ->where( 'url', $data[ 'IMGURLS' ][0]['url'] )
+                                    ->count() == 0
+                            )
+                            {
+                                App\Image::insert( [ 'product_id' => $id, 'url' => $data[ 'IMGURLS' ][0]['url'], 'main' => 0 ] );
+                            }
                         }
                     /**
                      *  Since there is not a single product of this 
@@ -126,7 +137,7 @@ class HeurekaImporter
                      */
                     } else {
                         /**
-                         *  IF#5
+                         *  IF#6
                          *  If there is not a single avaible image, we increment group variations.
                          */
                         if( count( $data[ 'IMGURLS' ] ) < 1 )
@@ -154,7 +165,7 @@ class HeurekaImporter
                     $set = count ( $data[ 'IMGURLS' ] ) > 0 ? $data['ITEM_ID'] : false ;
                     $item_groups [ $data[ 'ITEMGROUP_ID' ] ] = [ 'count' => 0, 'id' => $set ];
                     /**
-                     *  IF#6
+                     *  IF#7
                      *  Script won't save product unless it has at least one image avaible.
                      */
                     if( !$set === false )
@@ -166,7 +177,7 @@ class HeurekaImporter
             else 
             {
                 /**
-                 *  IF#7
+                 *  IF#8
                  *  Products without variations and with avaible images are stored.
                  */
                 if( count( $data[ 'IMGURLS' ] ) > 0 )
