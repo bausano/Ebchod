@@ -29,7 +29,8 @@
                 </div>
                 <div id="search">
                     <form>
-                        <input placeholder="Vyhledávání" type="text" />
+                        <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button class="toggle-settings"><i class="fa fa-plus"></i></button>
                         <button class="orange"><i class="fa fa-search"></i></button>
                     </form>
@@ -39,12 +40,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam necessitatibus culpa quidem expedita! Consequuntur accusantium fugiat iusto explicabo facilis, amet.</p>
                         </div>
                     </div>
-                    <ul class="autocomplete">
-                           <li>Test</li>
-                           <li>Test</li>
-                           <li>Test</li>
-                           <li>Test</li>
-                           <li>Test</li>
+                    <ul class="autocomplete">   
                     </ul>
 
                     <p class="small italic light-grey-text">Oblíbené: Kočárky</p>

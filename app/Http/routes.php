@@ -36,9 +36,14 @@ Route::group(['namespace' => 'Sites'], function() {
 	});
 
 });
-//
-//
-//
+
+/**
+ * 2 - Ajax
+ */
+Route::group(['prefix' => 'ajax'], function() {
+	Route::post('autocomplete', 'AjaxController@autocomplete');
+});
+
 
 
 /*****************************************************************
