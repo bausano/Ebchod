@@ -10,36 +10,13 @@
     </div>
     <div class="row white-bg">
         <div class="row-90 grid" style="height: 600px;">
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
+            @for( $x = 0 ; $x < rand(10,13) ; $x++ )
+                <div class="col-3 grid-item">
+                    <div class="area">
+                        @include('partials.product')
+                    </div>
                 </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
+                @endfor
         </div>
     </div>
     <div class="row theme-bg">

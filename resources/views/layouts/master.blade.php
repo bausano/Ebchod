@@ -28,12 +28,24 @@
                     <h1 class="center light light-grey-text">Nejširší škála zboží na jednom místě</h1>
                 </div>
                 <div id="search">
-                    <input placeholder="Vyhledávání" type="text" />
-                    <button><i class="fa fa-plus"></i></button>
-                    <button class="orange"><i class="fa fa-search"></i></button>
+                    <form>
+                        <input placeholder="Vyhledávání" type="text" />
+                        <button class="toggle-settings"><i class="fa fa-plus"></i></button>
+                        <button class="orange"><i class="fa fa-search"></i></button>
+                    </form>
 
-                    <div class="settings"></div>
-                    <div class="autocomplete"></div>
+                    <div class="settings">
+                        <div class="area">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam necessitatibus culpa quidem expedita! Consequuntur accusantium fugiat iusto explicabo facilis, amet.</p>
+                        </div>
+                    </div>
+                    <ul class="autocomplete">
+                           <li>Test</li>
+                           <li>Test</li>
+                           <li>Test</li>
+                           <li>Test</li>
+                           <li>Test</li>
+                    </ul>
 
                     <p class="small italic light-grey-text">Oblíbené: Kočárky</p>
                 </div>

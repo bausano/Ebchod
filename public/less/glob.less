@@ -38,6 +38,11 @@ table {
 	border-spacing: 0;
 }
 
+form {
+	display: block;
+	overflow: hidden;
+}
+
 /*
  * 1 - Global settings
  */
@@ -202,6 +207,9 @@ h6 {
 .small { font-size: 14px; line-height: 18px; }
 .tiny { font-size: 12px; line-height: 16px; }
 
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+
 .justify { text-align: justify; }
 .center { text-align: center; }
 .left { text-align: left; }
@@ -247,7 +255,7 @@ quote {
  */
 /* 4.1 - Index */
 .header {
-	height: 80%;
+	height: 100%;
 
 	nav {
 		width: 100%;
@@ -291,6 +299,7 @@ quote {
 			background: #fff;
 			float: left;
 			box-sizing: border-box;
+			display: block;
 
 			font-size: 20px;
 			
@@ -319,6 +328,25 @@ quote {
 				background: #f7f7f7;
 			}
 		}
+
+		.settings, .autocomplete {
+			width: 100%;
+			background: #fcfcfc;
+			display: none;
+		}
+		.settings { margin-top: 2px; };
+		.autocomplete {
+			li {
+				padding: 10px;
+				width: 100%;
+				box-sizing: border-box;
+				cursor: pointer;
+
+				&:hover {
+					background: #f7f7f7;
+				}
+			}
+		}
 	}
 }
 
@@ -327,12 +355,6 @@ quote {
 	overflow: hidden;
 	display: block;
 	cursor: pointer;
-
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
 	
 	.shadow(0.2);
 	.animate();
@@ -360,6 +382,7 @@ article {
 	&:hover {
 		.shadow(0.6;)
 	}
+
 }
 
 .footer {

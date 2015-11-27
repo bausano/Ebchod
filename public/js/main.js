@@ -8,4 +8,9 @@ $(document).ready(function() {
             itemSelector: '.grid-item'
         }).masonry('reloadItems');
     });
+
+    $(".toggle-settings").click( function() {
+    	$(".settings").fadeToggle();
+    	return false;
+    });
 });
