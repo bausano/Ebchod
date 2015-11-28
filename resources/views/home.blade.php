@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['title' => $title])
 
 @section('main')
     <div class="row theme-bg">

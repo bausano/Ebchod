@@ -18,6 +18,7 @@ class HomeController extends Controller
     {
         
         return \View::make('home', [
+            'title' => 'Home',
             'test' => 'test',
         ]);  
     }

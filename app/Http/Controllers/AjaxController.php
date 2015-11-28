@@ -30,7 +30,7 @@ class AjaxController extends Controller
     {
         if( $request->isMethod('post') )
             return  json_encode(
-                        App\Product::where('product_name', 'regexp', $request->input('pattern') )->limit(5)->get()->toArray()
+                        App\Product::where('product_name', 'regexp', $request->input('pattern'))->limit(5)->get()->toArray()
                     );
         return '403';
     }
