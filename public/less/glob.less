@@ -254,7 +254,7 @@ hr {
 .almost-black-bg { background-color: #222; }
 
 /* 3.2 - Image scroll*/
-[class^='img-'] { position: absolute; z-index: -1; }
+[class^='img-'] { position: absolute; z-index: -1; height: 100% !important }
 
 /* 3.3 - Filter */
 /* 3.3.1 - jQuery slider */
@@ -331,6 +331,7 @@ hr {
 	height: 100%;
 	position: relative;
 	z-index: 100;
+	overflow: visible;
 
 	nav {
 		width: 100%;
