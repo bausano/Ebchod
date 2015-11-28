@@ -43,9 +43,8 @@ Route::group(['prefix' => 'ajax'], function() {
 /**
  * 3 - Admin
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::get('', 'AdminController@index'); // Index
-	Route::get('logout', 'Auth\AuthController@getLogout'); // Logout
 	Route::get('add', 'AdminController@create'); // Add shop
 	Route::post('add', 'AdminController@store'); // Add shop
 	Route::get('edit', 'AdminController@edit'); // Edit shop
@@ -63,6 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	});
 });
 
+Route::get('admin/logout', 'Auth\AuthController@getLogout'); // Logout
 Route::get('admin/login', 'Auth\AuthController@getLogin');
 Route::post('admin/login','Auth\AuthController@postLogin');
 Route::get('admin/register', 'Auth\AuthController@getRegister');
