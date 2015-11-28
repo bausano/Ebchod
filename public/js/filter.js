@@ -44,8 +44,10 @@ $(document).ready(function() {
 
 function buildFilter( data ) {
 	Filter = $.extend( Filter , data );
+	$(".toggle-autocomplete").trigger("keyup");
 }
 
 function clearFilter() {
 	Filter = {};
+	$(".toggle-autocomplete").trigger("keyup");
 }

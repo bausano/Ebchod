@@ -22,7 +22,7 @@
 	    	data: $.extend( Filter , { pattern: string, _token: $(".toggle-autocomplete").next().val() } )
 	    }).done(function(data) {
 	    	data = jQuery.parseJSON(data);
-	    	console.log( data );
+
 	    	if( data === '403' )
 	    		return false;
 
