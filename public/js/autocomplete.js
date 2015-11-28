@@ -45,9 +45,10 @@
 	    	}
     });
     }).on('blur', function(e) {
-    	ac = $(e.tatget);
-    	if( !(ac).is(".autocomlete") )
-    		$(ac).hide();
+
+    	ac = $(e.target);
+    	if( !$(ac).is(".autocomlete") )
+    		$(".autocomplete").hide();
     });
 
 	$("#search form").submit(function(e) {
