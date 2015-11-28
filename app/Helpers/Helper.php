@@ -5,7 +5,7 @@ class Helper
 	public static function sectionTree($sections, $indent = 0)
 	{
 		if( count( $sections ) == 0 )
-			return "<li>Nenalezena žádná kategorie</li>"
+			return "<li>Nenalezena žádná kategorie</li>";
 
 		$html = '';
 
