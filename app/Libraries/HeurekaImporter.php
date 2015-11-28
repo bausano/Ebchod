@@ -56,7 +56,6 @@ class HeurekaImporter
                         case 'MANUFACTURER':
                         case 'URL':
                         case 'PRICE_VAT':
-                        case 'CATEGORYTEXT':
                         case 'GIFT':
                             $data[ $child->nodeName ] = $child->nodeValue;
                             break;
@@ -79,7 +78,7 @@ class HeurekaImporter
                             break;
                         
                         case 'CATEGORYTEXT':
-                            $data[ 'CATEGORYTEXT' ] = Section::parse( $child->nodeValue );
+                            $data[ 'CATEGORYTEXT' ] = Section::parse( str_replace('Heureka.cz | ', '', $child->nodeValue ) );
                             break;
 
                         default: continue;
