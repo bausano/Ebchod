@@ -9,9 +9,9 @@ $(document).ready(function() {
         }).masonry('reloadItems');
     });
 
-    $(".toggle-settings").click(function() {
-    	$(".settings").fadeToggle();
-    	return false;
+    $(".toggle-filter").click(function() {
+    	$(".filter").fadeToggle();
+        clearFilter();
     });
 
     $('.img-header').imageScroll({

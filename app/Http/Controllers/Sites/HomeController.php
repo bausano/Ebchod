@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App;
 
 class HomeController extends Controller
 {
@@ -16,10 +17,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+
         return \View::make('home', [
             'title' => 'Home',
-            'test' => 'test',
+            'sections' => App\Section::where('parent_id', 0),
         ]);  
     }
 }

@@ -19,13 +19,13 @@
 	    $.ajax({
 	    	url: '/ajax/autocomplete',
 	    	method: 'post',
-	    	data: { pattern: string, _token: $(".toggle-autocomplete").next().val() }
+	    	data: $.extend( Filter , { pattern: string, _token: $(".toggle-autocomplete").next().val() } )
 	    }).done(function(data) {
 	    	data = jQuery.parseJSON(data);
-
+	    	console.log( data );
 	    	if( data === '403' )
 	    		return false;
-	    	console.log( data );
+
 	    	$(ac).children().each(function() {
 	    		$(this).remove();
 	    	});
@@ -45,7 +45,8 @@
 	    	}
     });
     }).on('blur', function(e) {
-    	if( ( ac = e.target() ) !== $(".autocomlete") )
+    	ac = $(e.tatget);
+    	if( !(ac).is(".autocomlete") )
     		$(ac).hide();
     });
 

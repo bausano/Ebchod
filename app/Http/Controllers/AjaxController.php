@@ -27,11 +27,20 @@ class AjaxController extends Controller
      * @return array result
      */    
     public function autocomplete(Request $request)
-    {
-        if( $request->isMethod('post') )
+    {   
+        if( $request->isMethod('post') ) 
+        {
+            $query = App\Product::where('product_name', 'regexp', $request->input('pattern'));
+
+            if( null != ( $min = $request->input('min') ) && null != ( $max = $request->input('max') ) )
+                $query->where('price', '>=', $min)->where('price', '<=', $max);
+            if( null != ( $section = $request->input('section') ) )
+                $query->where('section_id', $section);
+
             return  json_encode(
-                        App\Product::where('product_name', 'regexp', $request->input('pattern'))->limit(5)->get()->toArray()
+                        $query->limit(5)->get()->toArray()
                     );
+        }
         return '403';
     }
 }

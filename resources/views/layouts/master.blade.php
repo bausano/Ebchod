@@ -21,17 +21,14 @@
                     <form>
                         <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button class="toggle-settings"><i class="fa fa-plus"></i></button>
+                        <button class="toggle-filter"><i class="fa fa-plus"></i></button>
                         <button class="orange"><i class="fa fa-search"></i></button>
                     </form>
 
-                    <div class="settings">
-                        <div class="area">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam necessitatibus culpa quidem expedita! Consequuntur accusantium fugiat iusto explicabo facilis, amet.</p>
-                        </div>
-                    </div>
                     <ul class="autocomplete">   
                     </ul>
+                        
+                    @include('partials.filter')
 
                     <p class="small italic light-grey-text">Oblíbené: Kočárky</p>
                 </div>

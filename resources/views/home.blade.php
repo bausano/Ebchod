@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => $title])
+@extends('layouts.master', ['title' => $title, 'sections' => $sections->get() ])
 
 @section('main')
     <div class="row theme-bg">
@@ -16,7 +16,7 @@
                         @include('partials.product')
                     </div>
                 </div>
-                @endfor
+            @endfor
         </div>
     </div>
     <div class="row theme-bg">
