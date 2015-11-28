@@ -3,20 +3,20 @@ var Filter = {};
 $(document).ready(function() {
 
 	$(".ui-slider-handle").draggable();
-	
+
 	$(".price-range").slider({
 		range: true,
 		min: ( min = parseInt($(".price-range").data('min')) ),
 		max: ( max = parseInt($(".price-range").data('max')) ),
 		values: [ min, max ],
 		create: function() {
-			$(".min").html(min);
-			$(".max").html(max);
+			$(".min").html(min + " Kč");
+			$(".max").html(max + " Kč");
 
 		},
-		slide: function(event, ui) {
-			$(".min").html(ui.values[0]);
-			$(".max").html(ui.values[1]);
+		stop: function(event, ui) {
+			$(".min").html(ui.values[0] + " Kč");
+			$(".max").html(ui.values[1] + " Kč");
 
 			buildFilter({ min: ui.values[0], max: ui.values[1]});
 		}
