@@ -21,6 +21,10 @@ class HomeController extends Controller
         return \View::make('home', [
             'title' => 'Home',
             'sections' => App\Section::where('parent_id', 0),
+            'priceRange' => [
+                App\Product::orderBy('price', 'ASC')->limit(1),
+                App\Product::orderBy('price', 'DESC')->limit(1),
+            ],
         ]);  
     }
 }

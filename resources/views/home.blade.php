@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => $title, 'sections' => $sections->get() ])
+@extends('layouts.master', ['title' => $title, 'sections' => $sections->get(), 'price-range' => $priceRange])
 
 @section('main')
     <div class="row theme-bg">
