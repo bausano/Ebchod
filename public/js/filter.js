@@ -1,9 +1,16 @@
+/**
+ * JS creating a filter of products, which is processed in Ajax controller
+ */
+
+/* Filter data ( name: value ) */
 var Filter = {};
 
 $(document).ready(function() {
 
+	/* Optimalization for mobiles */
 	$(".ui-slider-handle").draggable();
 
+	/* jQuery UI slider*/
 	$(".price-range").slider({
 		range: true,
 		min: ( min = parseInt($(".price-range").data('min')) ),
@@ -22,6 +29,7 @@ $(document).ready(function() {
 		}
 	});
 
+	/* Selection section */
 	$(".section-container").click(function(e) {
 		var li = $(e.target);
 		if( $(li).is("i") ) {
@@ -38,6 +46,7 @@ $(document).ready(function() {
 		buildFilter({ section: $(this).data('value') });
 	});
 
+	/* Clearing section */
 	$(".section-container i.delete").click(function() {
 		$(".section-container p span.value").text('Vyberte kategorii');
 		$(".section-container").data('value', '');
@@ -45,12 +54,19 @@ $(document).ready(function() {
 	});
 });
 
+/**
+ * builds filter from given data
+ * @param data data
+ */
 function buildFilter( data ) {
 	Filter = $.extend( Filter , data );
-	$(".toggle-autocomplete").trigger("keyup");
+	$(".toggle-autocomplete").trigger("input");
 }
 
+/**
+ * clears filter
+ */
 function clearFilter() {
 	Filter = {};
-	$(".toggle-autocomplete").trigger("keyup");
+	$(".toggle-autocomplete").trigger("input");
 }

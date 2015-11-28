@@ -86,7 +86,6 @@ img {
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
-	z-index: 5;
 }
 
 .row {
@@ -277,6 +276,8 @@ hr {
 		border-radius: 9.5px;
 		border: 3px solid @theme;
 		background: #f8f8f8;
+		-ms-touch-action: none;
+		touch-action: none;
 		.shadow();
 	}
 
@@ -329,7 +330,7 @@ hr {
 .header {
 	height: 100%;
 	position: relative;
-	z-index: 100;
+	overflow: visible;
 
 	nav {
 		width: 100%;
