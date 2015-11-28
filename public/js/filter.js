@@ -1,6 +1,9 @@
 var Filter = {};
 
 $(document).ready(function() {
+
+	$(".ui-slider-handle").draggable();
+	
 	$(".price-range").slider({
 		range: true,
 		min: ( min = parseInt($(".price-range").data('min')) ),
