@@ -41,7 +41,7 @@
 	    	/* if no products, say it */
 	    	if ( data[0] === undefined ) {
 	    		$(ac).append(
-	    			'<li><strong>No products found</strong></li>'
+	    			'<li><strong>Nenalezen žádný produkt</strong></li>'
 	    		);
 	    	}
 	    	else {
