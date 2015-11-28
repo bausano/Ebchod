@@ -1,8 +1,12 @@
 <head>
-    <title>{{ 'Ebchod :: ' . $title }}</title>
+    
+
+
+    <title>{{ 'Ebchod | ' . $title }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link href="/css/glob.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="/favicon.ico">
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
