@@ -117,7 +117,6 @@ img {
 
 .area {
 	padding: 2%;
-	overflow: hidden;
 }
 
 /*
@@ -271,6 +270,7 @@ hr {
 /* 3.3 - Filter */
 
 .filter {
+	overflow: visible;
 
 	/* 3.3.1 - jQuery slider */
 	.price-range {
@@ -319,21 +319,22 @@ hr {
 		.delete:hover {
 			color: @theme;
 		}
-	}
-	.sections {
-		position: absolute; top: 46px; left: 0;
-		z-index: 40;
-		width: 100%;
-		display: none;
 
-		li {
-			background: #f8f8f8;
-			padding: 5px;
-			box-sizing: border-box;
-			cursor: pointer;
+		.sections {
+			position: absolute; top: 46px; left: 0;
+			z-index: 1000;
+			width: 100%;
+			display: none;
 
-			&:hover {
-				background: #f2f2f2;
+			li {
+				background: #f8f8f8;
+				padding: 5px;
+				box-sizing: border-box;
+				cursor: pointer;
+
+				&:hover {
+					background: #f2f2f2;
+				}
 			}
 		}
 	}
@@ -350,7 +351,6 @@ hr {
 	nav {
 		width: 100%;
 		overflow: hidden;
-		//background: rgba(0, 0, 0, 0.2);
 
 		a {
 			display: inline-block;
@@ -370,6 +370,7 @@ hr {
 			}
 		}
 		a.logo {
+			margin: 0 10px;
 			padding: 0;
 			float: left;
 		}

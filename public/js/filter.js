@@ -31,6 +31,7 @@ $(document).ready(function() {
 
 	/* Selection section */
 	$(".section-container").click(function(e) {
+
 		var li = $(e.target);
 		if( $(li).is("i") ) {
 			$(".sections").hide();
@@ -40,10 +41,10 @@ $(document).ready(function() {
 		if( $(li).is(".section-option") ) {
 			$(this).data('value', $(li).data('option'));
 			$(this).find("p span.value").first().html($(li).text());
+			buildFilter({ section: $(this).data('value') });
 		}
 
 		$(".sections").toggle();
-		buildFilter({ section: $(this).data('value') });
 	});
 
 	/* Clearing section */
