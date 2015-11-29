@@ -1,17 +1,7 @@
 <html>
-	<head>
-		<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-	    <link href="/css/glob.css" rel="stylesheet" type="text/css">
-	    <link href="/css/admin.css" rel="stylesheet" type="text/css">
-	    <link rel="icon" href="/favicon.ico">
-	    <link href="https://fonts.googleapis.com/css?family=Lato:100,400" rel="stylesheet" type="text/css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	@include('partials.head')
 
-	    <script type="text/javascript" src="/js/jquery.min.js"></script>
-	    <script type="text/javascript" src="/js/admin.js"></script>
-
-    	<title>E-bchod | Admin</title>
-	</head>
 	<body>
 		<div id="page">
 			<div class="header">
