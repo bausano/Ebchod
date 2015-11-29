@@ -20,7 +20,7 @@
                 <div id="search">
                     <form>
                         <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! csrf_field() !!}
                         <button class="toggle-filter"><i class="fa fa-plus"></i></button>
                         <button class="orange"><i class="fa fa-search"></i></button>
                     </form>

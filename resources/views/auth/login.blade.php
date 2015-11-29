@@ -8,30 +8,13 @@
 
     </head>
     <body>
-        <div class="login shadow">
-            <form method="POST" action="/admin/login">
-                {!! csrf_field() !!}
-
-                <div class="item">
-                    Email
-                    <input type="email" name="email" value="{{ old('email') }}">
-                </div>
-
-                <div class="item">
-                    Password
-                    <input type="password" name="password" id="password">
-                </div>
-
-                <div class="item">
-                    <label for="remember">Remember Me</label>
-                    <input type="checkbox" name="remember" id="remember"> 
-                </div>
-
-                <div>
-                    <button type="submit" class="orange">Login</button>
-                </div>
-            </form>
-        </div>
-
+        <form method="post" class="login" action="">
+            {!! csrf_field() !!}
+            <input type="email" name="email" value="{{ old('email') }}">
+            <input type="password" name="password" id="password">
+            <label for="remember">Remember Me</label>
+            <input type="checkbox" name="remember" id="remember"> 
+            <button type="submit" class="btn">Login</button>
+        </form>
     </body>
 </html>

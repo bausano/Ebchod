@@ -57,9 +57,13 @@
     }).on('blur', function(e) {
     	
     	/* hiding autocomplete on input blur */
+    	/*
+    	console.log(e);
+    	$(".autocomplete").hide();
     	ac = $(e.target);
-    	if( !$(ac).is(".autocomlete") )
-    		$(".autocomplete").hide();
+    	console.log( $(ac).is(".toggle-autocomlete") );
+    	if( !$(ac).is(".toggle-autocomplete") )
+    		$(".autocomplete").hide();*/
     });
 
     /* preventing form from submitting */
