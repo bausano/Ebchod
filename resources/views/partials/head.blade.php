@@ -1,4 +1,5 @@
 <head>
+    <meta charset="UTF-8">
     
     <title>{{ 'Ebchod | ' . $title }}</title>
 

@@ -16,7 +16,7 @@
         <div class="section-container" data-value="">
             <p class="bold"><span class="value">Vyberte kategorii</span><span style="float: right"><i class="fa fa-times delete"></i></span></p>
             <ul class="sections">
-                <?= Helper::sectionTree($sections) ?>
+                <?= Helper::sectionTree($sections->get()) ?>
             </ul>            
         </div>
     </div>
