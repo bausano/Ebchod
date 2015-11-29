@@ -25,6 +25,7 @@ class HomeController extends Controller
                 App\Product::orderBy('price', 'ASC')->limit(1),
                 App\Product::orderBy('price', 'DESC')->limit(1),
             ],
+            'favProducts' => App\Product::limit(6),
         ]);  
     }
 }

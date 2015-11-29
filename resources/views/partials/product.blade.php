@@ -1,9 +1,9 @@
 <div class="product">
-    <div class="area">
-        <h4 class="uppercase">Product {{ $x }}</h4>
-    	<img src="http://placehold.it/350x150" alt="">
-        <p class="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, minima!</p>
-        <p class="justify">Lorem ipsum dolor sit amet.</p>
+    <div class="area-6">
+        <h5 class="uppercase">{{ $product->display_name }}</h5>
+    	<img src="{{ $product->images->first()->url }}" alt="">
+        <p class="left bold big">{{ $product->price }} Kč</p>
+        <p class="justify">{{ $product->description }}</p>
     </div>
 </div>
 
