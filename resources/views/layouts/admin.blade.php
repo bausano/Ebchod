@@ -27,7 +27,7 @@
 					<a href=""><i class="fa fa-comments-o"></i> Blog</a>
 					<nav class="admin-submenu">
 						<a href="">Browse</a>
-						<a href="">New</a>
+						<a href="/admin/blog/add">New</a>
 					</nav>
 					<a href=""><i class="fa fa-database"></i> Import</a>
 					<a href=""><i class="fa fa-pie-chart"></i> Statistics</a>

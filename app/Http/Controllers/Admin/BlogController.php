@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App;
 
 class BlogController extends Controller
 {
@@ -42,17 +43,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        if( isset( $request->title ) && isset( $request->blog )  ) {
-            $data = [   'name' => $request->title,
-                        'seo' => str_slug($request->title),
-                        'content' => $request->blog,
-                        'user_id' => \Auth::user()->id ];
+        if( isset( $request->title ) && isset( $request->blog )  )
+        {
+            $data = [   
+                'name' => $request->title,
+                'seo' => str_slug($request->title),
+                'content' => $request->blog,
+                'user_id' => \Auth::user()->id
+            ];
 
-            if( isset( $request->sections_ids ) ) {
-                $data[ 'sections' ] = substr( $request->sections_ids, 1 );
-            }
+            if( isset( $request->sections_ids ) )
+                $data[ 'sections' ] = $request->sections_ids;
 
-            \App\Blog::insert( $data );
+            App\Blog::insert( $data );
         }
 
         return \Redirect::to('admin');

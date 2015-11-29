@@ -497,6 +497,7 @@ article {
 	&-content > div {
 		height: 100%;
 	}
+
 	/* 5.1.1 - Menu */
 	&-menu {
 		width: 100%;
@@ -602,25 +603,41 @@ article {
 }
 
 /* 5.2 - Login */
+.login-screen {
+	background: @theme;
+}
 .login {
-	background-color: #FFB82F;
-	margin: auto;
-	display: table-cell;
-  vertical-align: middle;
+	width: 30%;
+	margin: 20% auto;
+	background: #f8f8f8;
+	text-align: center;
+	.shadow();
 
-	input {
-		float: right;
-		width: 120px;
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] {
+		border-left: 2px solid #ddd;
+		width: 100%;
+		padding: 5px;
+		margin: 5px 0;
+		box-sizing: border-box;
+		.shadow();
+
+		&:hover, &:focus {
+			border-color: @theme;
+		}
 	}
-
+	input[type="checkbox"] {
+		width: 20px; height: 20px;
+	}
 	button {
-		width: 9%;
-
-		text-align: center;
-		font-size: 14px;
-
-		background: #fcfcfc;
-
+		padding: 8px 20px;
+		background: @theme;
+		margin: 5px 0;
 		cursor: pointer;
+
+		&:hover, &:active {
+			background: @theme-secondary;
+		}
 	}
 }

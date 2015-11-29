@@ -7,36 +7,19 @@
         <link href="/css/glob.css" rel="stylesheet" type="text/css">
 
     </head>
-    <body>
-        <div class="login shadow">
-            <form method="POST" action="/admin/register">
+    <body class="login-screen">
+        <form class="login" method="post" action="">
+            <div class="area">
+                <h5 class="center dark-grey-text">Admin register</h5>
+                <hr />
                 {!! csrf_field() !!}
-
-                <div class="item">
-                    Name
-                    <input type="text" name="name" value="{{ old('name') }}">
-                </div>
-
-                <div class="item">
-                    Email
-                    <input type="email" name="email" value="{{ old('email') }}">
-                </div>
-
-                <div class="item">
-                    Password
-                    <input type="password" name="password">
-                </div>
-
-                <div class="item">
-                    Confirm Password
-                    <input type="password" name="password_confirmation">
-                </div>
-
-                <div>
-                    <button type="submit" class="orange">Register</button>
-                </div>
-            </form>
-        </div>
-
+                <input placeholder="Nick" type="text" name="name" value="{{ old('name') }}">
+                <input placeholder="Email" type="email" name="email" value="{{ old('email') }}">
+                <input placeholder="Heslo" type="password" name="password">
+                <input placeholder="Znovu heslo" type="password" name="password_confirmation">
+                <hr />
+                <button type="submit" class="orange">Register</button>
+            </div>
+        </form>
     </body>
 </html>
