@@ -16,7 +16,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return \View::make('admin/blog/browse', [
+        
+        ]); 
     }
 
     /**
@@ -26,7 +28,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return \View::make('admin/blog/add', [
+            'sections' => \App\Section::where('parent_id', 0),
+        ]); 
     }
 
     /**
@@ -37,7 +41,20 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if( isset( $request->title ) && isset( $request->blog )  ) {
+            $data = [   'name' => $request->title,
+                        'seo' => str_slug($request->title),
+                        'content' => $request->blog,
+                        'user_id' => \Auth::user()->id ];
+
+            if( isset( $request->sections_ids ) ) {
+                $data[ 'sections' ] = substr( $request->sections_ids, 1 );
+            }
+
+            \App\Blog::insert( $data );
+        }
+
+        return \Redirect::to('admin');
     }
 
     /**

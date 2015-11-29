@@ -18,6 +18,24 @@ class Helper
 				$html .= self::sectionTree($section->children, $indent + 10);
 			}
 		}
+		
+		return $html;
+	}
+
+	public static function sectionList($sections) {
+
+		if( count( $sections ) == 0 )
+			return '<span>Nenalezena žádná kategorie</span>';
+
+		$counter = 0;
+		$html = '';
+		foreach ($sections as $section) {
+			if( count( $section->children ) > 0 ) {
+				$html .= self::sectionList($section->children);
+			} else {
+				$html .= '<div class="section-option notselectable" id="' . $section->id . '">' . $section->name . '</div>';
+			}
+		}
 
 		return $html;
 	}
