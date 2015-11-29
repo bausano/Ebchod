@@ -13,6 +13,7 @@
     <script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/admin.js"></script>
     <script type="text/javascript" src="/js/filter.js"></script>
     <script type="text/javascript" src="/js/autocomplete.js"></script>
 </head>

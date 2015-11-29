@@ -1,44 +1,45 @@
+<!DOCTYPE html>
 <html>
 	
 	@include('partials.head')
 
 	<body>
-		<div id="page">
-			<div class="header">
-				<div class="left-column alerts">
-					<div><i class="fa fa-envelope"></i>&nbsp; <span class="notify">5</span></div>
-					<div><i class="fa fa-commenting"></i>&nbsp; 0</div>
-					<div><i class="fa fa-mouse-pointer"></i>&nbsp; <span class="notify">2</span></div>
-				</div>
-				<div class="right-column info"> <span onclick="window.location.href='/admin/';"> E-bchod backend </span> </div>
+		
+		<div class="row">
+			<div class="col-2 secondary-bg big admin-alerts">
+				<div class="col-4"><i class="fa fa-envelope"></i>&nbsp; <span class="bold">5</span></div>
+				<div class="col-4"><i class="fa fa-commenting"></i>&nbsp; 0</div>
+				<div class="col-4"><i class="fa fa-mouse-pointer"></i>&nbsp; <span class="bold">2</span></div>
 			</div>
-
-			<div class="content">
-				<div class="menu left-column">
-					<ul>
-						<li><span class="notselectable"><i class="fa fa-shopping-bag"></i>Eshops</span></li>
-							<ul class="scrollable">
-								<li>Browse</li>
-								<a href="/admin/add"><li>New</li></a>
-							</ul>
-						<li><span class="notselectable"><i class="fa fa-comments-o"></i>Blog</span></li>
-							<ul class="scrollable">
-								<li>Browse</li>
-								<a href="/admin/blog/add"><li>New</li></a>
-							</ul>
-						<li><span><i class="fa fa-database"></i>Import</span></li>
-						<li><span><i class="fa fa-pie-chart"></i>Statistics</span></li>
-
-						<a href="/"><li class="gap"><span><i class="fa fa-home"></i>Site</span></li></a>
-
-						<a href="/admin/logout"><li class="gap"><span><i class="fa fa-close"></i>Logout</span></li></a>
-					</ul>
-				</div>
-
-				<div class="results right-column">
-					<div class="prepare">
-						@yield('main')
-					</div>
+			<div class="col-10 theme-bg">
+				<h3 class="center">E-bchod backend</h3>
+			</div>
+		</div>
+		
+		<div class="row admin-content">
+			<div class="col-2 dark-grey-bg">
+				<nav class="admin-menu">
+					<a><i class="fa fa-shopping-bag"></i> Eshops</a>
+					<nav class="admin-submenu">
+						<a href="">Browse</a>
+						<a href="">New</a>
+					</nav>
+					<a href=""><i class="fa fa-comments-o"></i> Blog</a>
+					<nav class="admin-submenu">
+						<a href="">Browse</a>
+						<a href="">New</a>
+					</nav>
+					<a href=""><i class="fa fa-database"></i> Import</a>
+					<a href=""><i class="fa fa-pie-chart"></i> Statistics</a>
+					<a class="static"></a>
+					<a href=""><i class="fa fa-home"></i> Site</a>
+					<a class="static"></a>
+					<a href="/admin/logout"><i class="fa fa-close"></i> Logout</a>
+				</nav>
+			</div>
+			<div class="col-10 white-bg">
+				<div class="area">
+					@yield('main')
 				</div>
 			</div>
 		</div>

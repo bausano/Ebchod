@@ -97,6 +97,7 @@ img {
 
 [class^='col'] {
 	float: left;
+	box-sizing: border-box;
 }
 
 .col {
@@ -116,6 +117,7 @@ img {
 
 .area {
 	padding: 2%;
+	overflow: hidden;
 }
 
 /*
@@ -257,6 +259,7 @@ hr {
  */
 /* 3.1 - Classes */
 .theme-bg { background-color: @theme; }
+.secondary-bg { background-color: @theme-secondary; }
 .white-bg { background-color: #fff; }
 .grey-bg { background-color: @light-grey; }
 .dark-grey-bg { background-color: @dark-grey; }
@@ -465,11 +468,107 @@ article {
 	.animate();
 
 	&:hover {
-		.shadow(0.6;)
+		.shadow(0.6);
 	}
 
 }
 
 .footer {
 	//border-top: 5px solid @theme;
+}
+
+/** 
+ * 5 - backend
+ */
+.admin {
+
+	&-alerts div {
+		padding: 20px 10px;
+	}
+
+	&-content {
+		height: calc(~'100% - 62px');
+	}
+	&-content > div {
+		height: 100%;
+	}
+	/* 5.1 - Menu */
+	&-menu {
+		width: 100%;
+		background: @dark-grey;
+		text-align: left;
+
+		a {
+			background: @grey;
+			width: 100%;
+			border-top: 1px solid @dark-grey;
+			cursor: pointer;
+			color: #fff;
+			padding: 7px 10px;
+			box-sizing: border-box;
+			display: block;
+
+			&.static {
+				background: transparent;
+				border: none;
+				height: 20px;
+			}
+		}
+
+		.admin-submenu {
+			height: 0%;
+			display: none;
+			overflow: hidden;
+
+			> a {
+				background: transparent;
+				border: none;
+				color: @light-grey;
+				padding: 6px 15px;
+			}
+		}
+	}
+}
+
+/* 5.2 - Login (refactor) */
+.login {
+	background-color: #FFB82F;
+	margin: auto;
+	display: table-cell;
+  vertical-align: middle;
+
+	.item {
+		padding: 7px 0px 7px 0px;
+		border-bottom: 1px solid #A36D00;
+		width: 290px;
+		margin: 2px auto;
+	}
+
+	input {
+		float: right;
+		width: 120px;
+	}
+
+	button {
+		width: 9%;
+
+		text-align: center;
+		font-size: 14px;
+
+		background: #fcfcfc;
+
+		cursor: pointer;
+
+		&.orange {
+			background: #ffb82f;				
+
+			&:hover {
+				background: #E3A42A;
+			}
+		}
+
+		&:hover {
+			background: #f7f7f7;
+		}
+	}
 }

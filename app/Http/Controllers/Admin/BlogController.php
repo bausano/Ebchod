@@ -30,6 +30,7 @@ class BlogController extends Controller
     {
         return \View::make('admin/blog/add', [
             'sections' => \App\Section::where('parent_id', 0),
+            'title' => 'Blog'
         ]); 
     }
 
