@@ -33,7 +33,7 @@ class AjaxController extends Controller
             $query = App\Product::orderBy('views', 'DESC');
 
             if( null != ( $pattern = $request->input('pattern') ) )
-                $query->where('product_name', 'regexp', $request->input('pattern'));
+                $query->where('product_name', 'regexp', $pattern);
 
             if( null != ( $min = $request->input('min') ) && null != ( $max = $request->input('max') ) )
                 $query->where('price', '>=', $min)->where('price', '<=', $max);
