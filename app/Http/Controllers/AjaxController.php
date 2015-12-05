@@ -42,7 +42,7 @@ class AjaxController extends Controller
                 $query->where('section_id', $section);
 
             return json_encode(
-                $query->limit($request->input('limit'))->get()->toArray()
+                $query->skip((int) $request->input('offset'))->take($request->input('limit'))->get()->toArray()
             );
         }
         return '403';
