@@ -24,7 +24,7 @@ class AjaxController extends Controller
      * Returns products based on given filters
      *
      * @param string regex
-     * @return array result
+     * @return json result
      */    
     public function loadProducts(Request $request)
     {   
