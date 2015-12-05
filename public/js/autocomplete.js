@@ -24,9 +24,9 @@
 
 	    /* building ajax request */
 	    $.ajax({
-	    	url: '/ajax/autocomplete',
+	    	url: '/ajax/loadProducts',
 	    	method: 'post',
-	    	data: $.extend( Filter , { pattern: string, _token: $(".toggle-autocomplete").next().val() } )
+	    	data: $.extend( Filter , { limit: 5, pattern: string, _token: $(".toggle-autocomplete").next().val() } )
 	    }).done(function(data) {
 	    	data = jQuery.parseJSON(data);
 
@@ -47,7 +47,8 @@
 	    	else {
 	    		/* else parse and print products */
 	    		for( key in data ) {
-	    			print = data[ key ].display_name.replace(string, '<strong>' + string + '</strong>');
+	    			regex = new RegExp('(' + string + ')', 'gi')
+	    			print = data[ key ].display_name.replace(regex, '<strong>$1</strong>');
 	    			$(ac).append(
 	    				'<a href="/products/detail/' + data[ key ].item_id + '"><li>' + print + '</li></a>'
 	    			);

@@ -1,7 +1,7 @@
 <div class="filter">
     <div class="area">
         <p class="big bold dark-grey-text">Cena</p>
-        <div data-min="{{ $priceRange[0]->first()->price or 0 }}" data-max="{{ $priceRange[1]->first()->price or 1 }}" class="price-range">
+        <div data-min="{{ $priceRange[0] or 0 }}" data-max="{{ $priceRange[1] or 1 }}" class="price-range">
             <div class="min">
                 <p class="small italic"></p>
             </div>

@@ -21,25 +21,29 @@ class AjaxController extends Controller
     }
 
     /**
-     * Return atocomplete
+     * Returns products based on given filters
      *
      * @param string regex
      * @return array result
      */    
-    public function autocomplete(Request $request)
+    public function loadProducts(Request $request)
     {   
         if( $request->isMethod('post') ) 
         {
-            $query = App\Product::where('product_name', 'regexp', $request->input('pattern'));
+            $query = App\Product::orderBy('views', 'DESC');
+
+            if( null != ( $pattern = $request->input('pattern') ) )
+                $query->where('product_name', 'regexp', $request->input('pattern'));
 
             if( null != ( $min = $request->input('min') ) && null != ( $max = $request->input('max') ) )
                 $query->where('price', '>=', $min)->where('price', '<=', $max);
+
             if( null != ( $section = $request->input('section') ) )
                 $query->where('section_id', $section);
 
-            return  json_encode(
-                        $query->limit(5)->get()->toArray()
-                    );
+            return json_encode(
+                $query->limit($request->input('limit'))->get()->toArray()
+            );
         }
         return '403';
     }

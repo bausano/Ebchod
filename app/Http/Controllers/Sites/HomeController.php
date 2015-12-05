@@ -22,8 +22,8 @@ class HomeController extends Controller
             'title' => 'Home',
             'sections' => App\Section::where('parent_id', 0),
             'priceRange' => [
-                App\Product::orderBy('price', 'ASC')->limit(1),
-                App\Product::orderBy('price', 'DESC')->limit(1),
+                App\Product::min('price'),
+                App\Product::max('price'),
             ],
             'favProducts' => App\Product::limit(6),
         ]);  
