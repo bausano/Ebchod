@@ -28,21 +28,21 @@ class AjaxController extends Controller
      */    
     public function loadProducts(Request $request)
     {   
-        if( $request->isMethod('post') ) 
+        if ($request->isMethod('post')) 
         {
             $query = App\Product::orderBy('views', 'DESC');
 
-            if( null != ( $pattern = $request->input('pattern') ) )
+            if (null != ($pattern = $request->input('pattern')))
                 $query->where('product_name', 'regexp', $pattern);
 
-            if( null != ( $min = $request->input('min') ) && null != ( $max = $request->input('max') ) )
+            if (null != ($min = $request->input('min')) && null != ($max = $request->input('max')))
                 $query->where('price', '>=', $min)->where('price', '<=', $max);
 
-            if( null != ( $section = $request->input('section') ) )
+            if (null != ($section = $request->input('section')))
                 $query->where('section_id', $section);
 
             return json_encode(
-                $query->skip((int) $request->input('offset'))->take($request->input('limit'))->get()->toArray()
+                $query->skip((int) $request->input('offset'))->take((int) $request->input('limit'))->get()->toArray()
             );
         }
         return '403';
