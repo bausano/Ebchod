@@ -14,14 +14,19 @@
                     <a href="">Nejnovější zboží</a>
                 </nav>
                 <div id="search">
-                    <input placeholder="Vyhledávání" type="text" />
-                    <button><i class="fa fa-plus"></i></button>
-                    <button class="orange"><i class="fa fa-search"></i></button>
+                    <form>
+                        <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
+                        {!! csrf_field() !!}
+                        <button class="toggle-filter"><i class="fa fa-gear"></i></button>
+                        <button class="orange"><i class="fa fa-search"></i></button>
+                    </form>
 
-                    <div class="settings"></div>
-                    <div class="autocomplete"></div>
+                    <ul class="autocomplete">   
+                    </ul>
+                        
+                    @include('partials.filter')
 
-                    <p class="small italic light-grey-text">Oblíbené: Kočárky</p>
+                    <p class="small italic dark-grey-text">Oblíbené: Kočárky</p>
                 </div>
             </div>
         </div>

@@ -20,7 +20,8 @@ class ProductsController extends Controller
         $products = App\Product::limit(10);    
 
         return \View::make('products', [
-            'title' => 'Ebchod | Produkty',
+            'title' => 'Produkty',
+            'sections' => App\Section::where('parent_id', 0),
             'products' => $products,
         ]);
     }
