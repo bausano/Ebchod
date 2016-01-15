@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     
-    @include('partials.head');
+    @include('partials.head')
 
     <body>
         <div class="row header grey-bg">

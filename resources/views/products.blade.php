@@ -10,36 +10,13 @@
     </div>
     <div class="row white-bg">
         <div class="row-90 grid" style="height: 600px;">
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
+            @foreach($products->get() as $product)
+                <div class="col-4 grid-item">
+                    <div class="area">
+                        @include('partials.product')
+                    </div>
                 </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
-            <div class="col-4 grid-item">
-                <div class="area">
-                    @include('partials.product')
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @stop
