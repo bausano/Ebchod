@@ -69,6 +69,8 @@
 
     /* preventing form from submitting */
 	$("#search form").submit(function(e) {
-		e.preventDefault();
+		string = $(".toggle-autocomplete").val();
+
+		location.href = "/products/?" + "pattern=" + string 
 	});
 });

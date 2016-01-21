@@ -24,21 +24,9 @@
                 <div class="motto">
                     <h1 class="center light dark-grey-text">Nejširší škála zboží na jednom místě</h1>
                 </div>
-                <div id="search">
-                    <form>
-                        <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
-                        {!! csrf_field() !!}
-                        <button class="toggle-filter"><i class="fa fa-gear"></i></button>
-                        <button class="orange"><i class="fa fa-search"></i></button>
-                    </form>
 
-                    <ul class="autocomplete">   
-                    </ul>
-                        
-                    @include('partials.filter')
-
-                    <p class="small italic dark-grey-text">Oblíbené: Kočárky</p>
-                </div>
+                @include('partials.filter')
+                
             </div>
         </div>
         
