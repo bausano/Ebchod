@@ -3,7 +3,7 @@
     
     @include('partials.head')
 
-    <body>
+    <body id="master">
         <div class="row header">
 
             <!--

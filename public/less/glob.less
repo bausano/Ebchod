@@ -236,11 +236,11 @@ h6 {
 
 .notselectable {
 	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* 2.4 - Blocks*/
@@ -343,116 +343,126 @@ hr {
 			}
 		}
 	}
-}
-/*
- * 4 - Pages
- */
-/* 4.1 - Index */
-.header {
-	height: 100%;
-	position: relative;
-	overflow: visible;
+}		
 
-	nav {
+/* 3.3 - Autocomplete */
+#search {
+	width: 50%;
+	margin: 5% auto 0;
+	vertical-align: center;
+
+	input, button {
+		width: 82%;
+		padding: 16px;
+		border: none;
+		background: #fcfcfc;
+		float: left;
+		box-sizing: border-box;
+		display: block;
+
+		font-size: 20px;
+		
+	}
+	button {
+		width: 9%;
+
+		text-align: center;
+		font-size: 14px;
+
+		background: #fafafa;
+
+		cursor: pointer;
+		
+		.animate();
+
+		&.orange {
+				background: @theme;				
+
+				&:hover {
+					background: @theme-secondary;
+				}
+		}
+
+		&:hover {
+			background: #f7f7f7;
+		}
+	}
+
+	.filter, .autocomplete {
 		width: 100%;
-		overflow: hidden;
-		background: rgba(255, 255, 255, 0.5);
-
-		a {
-			display: inline-block;
-			padding: 20px;
-			float: right;
-
-			color: @dark-grey;
-
-			text-transform: uppercase;
-			font-size: 15px;
-			font-weight: bold;
-			
-			.animate();
-
-			&:hover {
-				color: @theme;
-			}
-		}
-		a.logo {
-			margin: 0 10px;
-			padding: 0;
-			float: left;
-		}
+		background: #fcfcfc;
+		display: none;
 	}
-	.motto {
-		margin-top: 10%;
-	}
-
-	#search {
-		width: 50%;
-		margin: 5% auto 0;
-		vertical-align: center;
-
-		input, button {
-			width: 82%;
-			padding: 16px;
-			border: none;
-			background: #fcfcfc;
-			float: left;
+	.filter { margin-top: 2px; };
+	.autocomplete {
+		li {
+			padding: 10px;
+			width: 100%;
 			box-sizing: border-box;
-			display: block;
-
-			font-size: 20px;
-			
-		}
-		button {
-			width: 9%;
-
-			text-align: center;
-			font-size: 14px;
-
-			background: #fafafa;
-
 			cursor: pointer;
-			
-			.animate();
-
-			&.orange {
-					background: @theme;				
-
-					&:hover {
-						background: @theme-secondary;
-					}
-			}
 
 			&:hover {
 				background: #f7f7f7;
 			}
 		}
+	}
+}
+/*
+ * 4 - Frond End
+ */
+/* 4.1 - Index */
+#master {
+	.header {
+		height: 100%;
+		position: relative;
+		overflow: visible;
 
-		.filter, .autocomplete {
+		nav {
 			width: 100%;
-			background: #fcfcfc;
-			display: none;
-		}
-		.filter { margin-top: 2px; };
-		.autocomplete {
-			li {
-				padding: 10px;
-				width: 100%;
-				box-sizing: border-box;
-				cursor: pointer;
+			overflow: hidden;
+			background: rgba(255, 255, 255, 0.5);
+
+			a {
+				display: inline-block;
+				padding: 20px;
+				float: right;
+
+				color: @dark-grey;
+
+				text-transform: uppercase;
+				font-size: 15px;
+				font-weight: bold;
+				
+				.animate();
 
 				&:hover {
-					background: #f7f7f7;
+					color: @theme;
 				}
 			}
+			a.logo {
+				margin: 0 10px;
+				padding: 0;
+				float: left;
+			}
+		}
+		.motto {
+			margin-top: 10%;
 		}
 	}
 }
+/* 4.1 - Products */
+#page {
+    background: url('@{img-folder}banner2.jpg') fixed;
+    background-size: cover;
+}
 
+/* 4.1 - Commonly used */
 .product {
 	overflow: hidden;
 	display: block;
 	cursor: pointer;
 	border-top: 3px solid @theme;
+	background: #fff;
 
 	.animate();
 
