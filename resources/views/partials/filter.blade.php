@@ -3,7 +3,7 @@
     <form>
         <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
         {!! csrf_field() !!}
-        <button class="toggle-filter"><i class="fa fa-gear"></i></button>
+        <button onClick="return false;" class="toggle-filter"><i class="fa fa-gear"></i></button>
         <button class="orange"><i class="fa fa-search"></i></button>
     </form>
 

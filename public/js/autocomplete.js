@@ -69,8 +69,16 @@
 
     /* preventing form from submitting */
 	$("#search form").submit(function(e) {
-		string = $(".toggle-autocomplete").val();
 
-		location.href = "/products/?" + "pattern=" + string 
+		e.preventDefault();
+
+		url = "/products/?pattern=" + $(".toggle-autocomplete").val();
+		Filter["limit"] = -1;
+		for(key in Filter) {
+			if(key === "_token" || key === "pattern" ) continue;
+			url = url + "&" + key + "=" + Filter[key];
+		}
+
+		location.href = url;
 	});
 });

@@ -34,6 +34,11 @@ class ProductsController extends Controller
      */
     public function show($id, $name = null)
     {
-        echo $id;
+        $product = App\Product::where('item_id', $id)->get();  
+        return \View::make('detail', [
+            'title' => 'Produkt',
+            'product' => $product,
+            'sections' => App\Section::where('parent_id', 0),
+        ]);
     }
 }
