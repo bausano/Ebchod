@@ -34,7 +34,7 @@ class ProductsController extends Controller
      */
     public function show($id, $name = null)
     {
-        $product = App\Product::where('item_id', $id)->get();  
+        $product = App\Product::where('item_id', $id)->get()->first();  
         return \View::make('detail', [
             'title' => 'Produkt',
             'product' => $product,
