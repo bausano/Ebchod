@@ -47,4 +47,12 @@ class AjaxController extends Controller
         }
         return '403';
     }
+
+    public function eshopRefer(Request $request)
+    {
+        if( $request->isMethod('post') ) {
+            $id = $request->input('id');
+            $query = App\Product::where('id', $id)->increment('clicks');
+        }
+    }
 }

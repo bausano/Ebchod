@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->integer('section_id');
             $table->boolean('gift');
             $table->integer('views')->default(0);
+            $table->integer('clicks')->default(0);
 
             $table->timestamps();
         });
