@@ -23,6 +23,10 @@ class ProductsController extends Controller
             'title' => 'Produkty',
             'sections' => App\Section::where('parent_id', 0),
             'products' => $products,
+            'priceRange' => [
+                App\Product::min('price'),
+                App\Product::max('price'),
+            ]
         ]);
     }
 

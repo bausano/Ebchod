@@ -10,9 +10,17 @@
         </div>
     </div>
     -->
-    <div class="row">
-        <div class="col-3 white-bg">
-        dsfgsdg
+    <div class="row-90 white-bg">
+        <div class="col-3">
+            <div class="area theme-bg">
+                <h4 class="center white-text">Kategorie</h4>
+            </div>
+            <ul class="sections-page">
+                <?= Helper::sectionTree($sections->get()) ?>
+            </ul>
+            <div class="area theme-bg">
+                <h4 class="center white-text">Doporučené</h4>
+            </div>
         </div>
         <div class="col-9 grid">
             @foreach($products->get() as $product)
