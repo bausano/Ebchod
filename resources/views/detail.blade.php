@@ -1,6 +1,19 @@
 @extends('layouts.page')
 
 @section('main')
+	<div class="row-90 theme-bg">
+		<div class="col-12">
+			<div class="area">
+				<p class="bold big white-text">
+
+					{{-- maybe remake at some point?? --}}
+					<a href="/products/?section={{ $product->section->id }}">{{ $product->section->name }}</a> >
+					{{ $product->display_name }}
+
+				</p>
+			</div>
+		</div>
+	</div>
     <div class="row-90 white-bg">
         <div class="col-6">
         	<div class="area-8">
