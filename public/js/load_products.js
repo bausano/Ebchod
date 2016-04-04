@@ -12,13 +12,13 @@ $(document).ready(function() {
     $.ajax({
     	url: '/ajax/loadProducts',
     	method: 'post',
-    	data: Filter,
-        _token: $(".toggle-autocomplete").next().val()
+    	data: $.extend(Filter, { _token: $(".toggle-autocomplete").next().val() })
     }).done(function(data) {
     	data = jQuery.parseJSON(data);
 
-            console.log('wtf');
-            console.log(data);
+        /* :))))))))))))))))))) */
+        console.log(data)
+
     	if( data === '403' )
     		return false;
 
