@@ -41,3 +41,11 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+$(document).ready(function(){
+    $(".product").hover(function(){
+        $(this).find(".product-desc").fadeIn();
+    }, function() {
+        $(this).find(".product-desc").fadeOut();
+    });
+});
