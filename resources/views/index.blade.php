@@ -10,6 +10,7 @@
         <script type="text/javascript" src="/js/jquery.imageScroll.min.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
         <script type="text/javascript" src="/js/images.js"></script>
+        <script type="text/javascript" src="/js/load_products.js"></script>
     </head>
     <body>
         <div class="row header">

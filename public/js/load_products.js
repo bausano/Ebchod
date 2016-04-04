@@ -8,13 +8,17 @@ for( x = 0 ; x < s.length ; x++ ) {
 }
 
 $(document).ready(function() {
+    console.log(Filter);
     $.ajax({
     	url: '/ajax/loadProducts',
     	method: 'post',
-    	data: Filter  /*{ _token: $(".toggle-autocomplete").next().val() }*/ 
+    	data: Filter,
+        _token: $(".toggle-autocomplete").next().val()
     }).done(function(data) {
     	data = jQuery.parseJSON(data);
 
+            console.log('wtf');
+            console.log(data);
     	if( data === '403' )
     		return false;
 
@@ -39,5 +43,5 @@ $(document).ready(function() {
     			);
     		}
     	}
-    }
+    })
 });
