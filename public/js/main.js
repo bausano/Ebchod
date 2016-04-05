@@ -59,7 +59,7 @@ $(document).ready(function() {
     });
 
     var id = $("#section-" + Filter.section).css({'background-color': "#eee"}).data("parent");
-    while(id != 0) {
+    while(id !== undefined && id != 0) {
 
         $(".sections-page li").each(function() {
             if($(this).data("parent") == id ) {
