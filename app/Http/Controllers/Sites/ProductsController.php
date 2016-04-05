@@ -26,7 +26,8 @@ class ProductsController extends Controller
             'priceRange' => [
                 App\Product::min('price'),
                 App\Product::max('price'),
-            ]
+            ],
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(5)->get()
         ]);
     }
 
@@ -38,6 +39,8 @@ class ProductsController extends Controller
      */
     public function show($id, $name = null)
     {
+        App\Product::where('item_id', $id)->increment('views');
+
         $product = App\Product::where('item_id', $id)->get()->first();  
         return \View::make('detail', [
             'title' => 'Produkt',
