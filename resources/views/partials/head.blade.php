@@ -7,6 +7,8 @@
     <link href="/css/glob.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="/favicon.ico">
 
+    <!-- UNDERSCORE for easier scroll handling -->
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.min.js"></script>
     <script type="text/javascript" src="/js/jquery.imageScroll.min.js"></script>
@@ -17,5 +19,4 @@
     <script type="text/javascript" src="/js/filter.js"></script>
     <script type="text/javascript" src="/js/autocomplete.js"></script>
     <script type="text/javascript" src="/js/load_products.js"></script>
-    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 </head>

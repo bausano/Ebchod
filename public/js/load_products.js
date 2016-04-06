@@ -7,19 +7,20 @@ for( x = 0 ; x < s.length ; x++ ) {
     Filter[param[0]] = param[1];
 }
 
-$(window).scroll(function () { 
+var throttled = _.throttle(ajaxload, 500);
+
+$(window).scroll(throttled);
+
+function ajaxload() {
    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
         var ac = '#product_feed';
         Filter['offset'] = $(ac).children().length;
-        console.log(Filter);
         $.ajax({
             url: '/ajax/loadProducts',
             method: 'post',
             data: $.extend(Filter, { _token: $(".toggle-autocomplete").next().val() })
         }).done(function(data) {
             data = jQuery.parseJSON(data);
-
-            console.log(data)
 
             if( data === '403' )
                 return false;
@@ -31,11 +32,10 @@ $(window).scroll(function () {
                 );
             }
             else {
-                Filter['limit'] += 3;
                 /* else parse and print products */
                 for( key in data ) {
                     $(ac).append(
-                        '<div class="col-4 grid-item">' +
+                        '<div class="col-4 grid-item" style="display: none">' +
                         '<div class="area">' +
                         '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
                             '<div class="product">' +
@@ -53,9 +53,15 @@ $(window).scroll(function () {
                         '</div>'
                     );
                 }
+
                 $(ac).masonry('reloadItems');
                 $(ac).masonry( 'layout' );
+
+                var e = $(ac + ' > div').slice(-6, -3);
+                for (var i = e.length - 1; i >= 0; i--) {
+                    $(e[i]).fadeIn();
+                }
             }
         })
     }
-});
+}
