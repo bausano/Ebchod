@@ -8,8 +8,10 @@
             <div class="col-12">
  
                 @include('partials.menu')
-                
-                @include('partials.filter')
+
+                <div class="row area-6">
+                    @include('partials.filter')
+                </div>
 
             </div>
         </div>
