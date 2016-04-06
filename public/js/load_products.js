@@ -5,7 +5,7 @@ var s = window.location.href.split('?')[1].split('&');
 
 for( x = 0 ; x < s.length ; x++ ) {
     param = s[x].split("=");
-    Filter[param[0]] = param[1];
+    Filter[param[0]] = (param[1]);
 }
 
 var lastScrollTop = 0

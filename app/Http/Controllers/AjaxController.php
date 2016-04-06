@@ -31,21 +31,20 @@ class AjaxController extends Controller
         if ($request->isMethod('post')) 
         {
             $query = App\Product::orderBy('views', 'DESC');
-
-            if (null != ($pattern = $request->input('pattern')))
+            if (null != ($pattern = urldecode($request->input('pattern'))))
                 $query->where('product_name', 'regexp', $pattern);
 
             if (null != ($min = $request->input('min')) && null != ($max = $request->input('max')))
                 $query->where('price', '>=', $min)->where('price', '<=', $max);
 
-            if (null != ($section = $request->input('section')))
+            if (null != ($section = urldecode($request->input('section'))))
                 $query->where('section_id', $section);
 
             $products = $query->skip((int) $request->input('offset'))->take((int) $request->input('limit'))->get()->toArray();
             foreach ($products as $key => $product) {
                 $products[$key]['img'] = App\Product::find( $product['id'] )->images()->first()->toArray()['url'];
             }
-            
+
             return json_encode(
                 $products
             );
