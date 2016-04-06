@@ -22,7 +22,7 @@
                 <h4 class="center white-text">Doporučené</h4>
             </div>
         </div>
-        <div class="col-9 grid" id="product_feed">
+        <div class="col-9 grid">
             @foreach($products->get() as $product)
                 <div class="col-4 grid-item">
                     <div class="area">

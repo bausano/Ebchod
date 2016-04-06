@@ -17,7 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = App\Product::limit(3); 
+        $products = App\Product::limit(10);    
 
         return \View::make('products', [
             'title' => 'Produkty',
