@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App;
 
 class BlogController extends Controller
 {
@@ -16,28 +17,16 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return \View::make('blog', [
+            'title' => 'Blog',
+            'sections' => App\Section::where('parent_id', 0),
+            'priceRange' => [
+                App\Product::min('price'),
+                App\Product::max('price'),
+            ],
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
+            'posts' => App\Blog::select()->orderBy('id', 'desc')->get()
+        ]); 
     }
 
     /**
@@ -46,9 +35,18 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $seo)
     {
-        //
+        return \View::make('post', [
+            'title' => 'Blog',
+            'sections' => App\Section::where('parent_id', 0),
+            'priceRange' => [
+                App\Product::min('price'),
+                App\Product::max('price'),
+            ],
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
+            'post' => App\Blog::select()->where('id', $id)->get()->first()
+        ]); 
     }
 
     /**

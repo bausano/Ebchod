@@ -27,15 +27,10 @@
         </div>
     </div>
     <div class="row white-bg">
-        <div class="col-6">
-            <div class="area">
+        @foreach($posts as $post)   
+            <div class="col-6 area">
                 @include('partials.article')
             </div>
-        </div>
-        <div class="col-6">
-            <div class="area">
-                @include('partials.article')
-            </div>
-        </div>
+        @endforeach
     </div>
 @stop

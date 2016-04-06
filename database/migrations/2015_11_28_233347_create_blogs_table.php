@@ -17,7 +17,7 @@ class CreateBlogsTable extends Migration
             $table->string('name', 255);
             $table->string('seo', 30);
             $table->integer('user_id');
-            $table->string('sections');
+            $table->string('img');
             $table->longText('content');
             $table->boolean('display')->default(true);
 

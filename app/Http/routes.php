@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Sites'], function() {
 	/* 1.3 - Blog */
 	Route::group(['prefix' => 'blog'], function() {
 		Route::get('', 'BlogController@index');
-		Route::get('/{id}/{seo}', 'BlogController@index');
+		Route::get('/{id}/{seo}', 'BlogController@show');
 	});
 
 	/* 1.4 - Partners */
@@ -64,6 +64,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 		Route::post('delete', 'BlogController@destroy'); // Delete blog thread
 		Route::get('edit', 'BlogController@edit'); // Edit blog thread
 		Route::post('edit', 'BlogController@update'); // Edit blog thread
+		Route::get('browse', 'BlogController@index'); // Browse threads
 	});
 });
 

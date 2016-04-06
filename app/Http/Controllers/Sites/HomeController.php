@@ -25,7 +25,8 @@ class HomeController extends Controller
                 App\Product::min('price'),
                 App\Product::max('price'),
             ],
-            'favorites' => App\Product::orderBy('views', 'desc')->limit(9)->get()
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(9)->get(),
+            'posts' => App\Blog::select()->orderBy('id', 'desc')->limit(2)->get()
         ]);  
     }
 }

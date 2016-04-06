@@ -10,6 +10,7 @@ use App;
 
 class BlogController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +18,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return \View::make('admin/blog/browse', [
-        
+        return \View::make('admin.blog.browse', [
+
         ]); 
     }
 
@@ -29,9 +30,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return \View::make('admin/blog/add', [
-            'sections' => \App\Section::where('parent_id', 0),
-            'title' => 'Blog'
+        return \View::make('admin.blog.add', [
+            'title' => 'Blog - Přidat'
         ]); 
     }
 
@@ -43,19 +43,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        if( isset( $request->title ) && isset( $request->blog )  )
+        if(isset($request->title) && isset($request->blog))
         {
+            $img = time() . "." . \Input::file('img')->getClientOriginalExtension();
+            \Input::file('img')->move('uploads', $img);
             $data = [   
                 'name' => $request->title,
                 'seo' => str_slug($request->title),
                 'content' => $request->blog,
-                'user_id' => \Auth::user()->id
+                'user_id' => \Auth::user()->id,
+                'img' => $img
             ];
 
-            if( isset( $request->sections_ids ) )
-                $data[ 'sections' ] = $request->sections_ids;
-
-            App\Blog::insert( $data );
+            App\Blog::insert($data);
         }
 
         return \Redirect::to('admin');
@@ -64,7 +64,7 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +75,7 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

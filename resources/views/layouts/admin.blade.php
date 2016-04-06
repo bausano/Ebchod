@@ -12,27 +12,27 @@
 				<div class="col-4"><i class="fa fa-mouse-pointer"></i>&nbsp; <span class="bold">2</span></div>
 			</div>
 			<div class="col-10 theme-bg">
-				<h3 class="center">E-bchod backend</h3>
+				<h3 class="center">e-bchod backend</h3>
 			</div>
 		</div>
 		
 		<div class="row admin-content">
 			<div class="col-2 dark-grey-bg">
 				<nav class="admin-menu">
-					<a><i class="fa fa-shopping-bag"></i> Eshops</a>
+					<a href="#"><i class="fa fa-shopping-cart"></i> Affiliate</a>
 					<nav class="admin-submenu">
-						<a href="">Browse</a>
-						<a href="">New</a>
+						<a href="">Procházet</a>
+						<a href="">Přidat</a>
 					</nav>
-					<a href=""><i class="fa fa-comments-o"></i> Blog</a>
+					<a href="#"><i class="fa fa-comments-o"></i> Blog</a>
 					<nav class="admin-submenu">
-						<a href="">Browse</a>
-						<a href="/admin/blog/add">New</a>
+						<a href="">Procházet</a>
+						<a href="/admin/blog/add">Přidat</a>
 					</nav>
 					<a href=""><i class="fa fa-database"></i> Import</a>
-					<a href=""><i class="fa fa-pie-chart"></i> Statistics</a>
+					<a href=""><i class="fa fa-pie-chart"></i> Statistiky</a>
 					<a class="static"></a>
-					<a href=""><i class="fa fa-home"></i> Site</a>
+					<a href="/"><i class="fa fa-home"></i> Stránka</a>
 					<a class="static"></a>
 					<a href="/admin/logout"><i class="fa fa-close"></i> Logout</a>
 				</nav>

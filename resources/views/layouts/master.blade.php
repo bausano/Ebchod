@@ -27,7 +27,8 @@
         </div>
         
         @yield('main')
-        
-        @include('partials.footer')
+        <div class="row almost-black-bg">
+            @include('partials.footer')            
+        </div>
     </body>
 </html>
