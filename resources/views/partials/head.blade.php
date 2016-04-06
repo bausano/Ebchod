@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>{{ 'Ebchod | ' . $title }}</title>
+    <title>{{ 'ebchod | ' . $title }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link href="/css/glob.css" rel="stylesheet" type="text/css">
@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/js/jquery.imageScroll.min.js"></script>
     <script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.touch-punch.min.js"></script>
-    <!-- UNDERSCORE for easier scroll handling -->
+        <!-- UNDERSCORE for easier scroll handling -->
     <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>

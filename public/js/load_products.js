@@ -9,7 +9,7 @@ for( x = 0 ; x < s.length ; x++ ) {
 }
 
 var lastScrollTop = 0
-var throttled = _.throttle(ajaxload, 400);
+var throttled = _.throttle(ajaxload, 500);
 $(window).scroll(throttled);
 
 
