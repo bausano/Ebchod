@@ -22,7 +22,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-9 grid">
+        <div class="col-9 grid" id="product_feed">
             <?php if(!isset($_GET['pattern'])) : ?>
                 <div class="col-12 area-8">
                     <img src="/img/logo.png" width="500" alt="">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-6 area-4">
                     <p class="big justify dark-grey-text">
-                        Využijte našich pokrokových filterů a vyberte si zboží přesně podle Vašeho gusta!
+                        Využijte filterů a vyberte si zboží přesně podle Vašeho gusta!
                     </p>
                 </div>
             <?php endif; ?>

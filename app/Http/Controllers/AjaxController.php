@@ -41,8 +41,13 @@ class AjaxController extends Controller
             if (null != ($section = $request->input('section')))
                 $query->where('section_id', $section);
 
+            $products = $query->skip((int) $request->input('offset'))->take((int) $request->input('limit'))->get()->toArray();
+            foreach ($products as $key => $product) {
+                $products[$key]['img'] = App\Product::find( $product['id'] )->images()->first()->toArray()['url'];
+            }
+            
             return json_encode(
-                $query->skip((int) $request->input('offset'))->take((int) $request->input('limit'))->get()->toArray()
+                $products
             );
         }
         return '403';

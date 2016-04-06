@@ -14,9 +14,11 @@ $(window).scroll(throttled);
 
 
 function ajaxload() {
+    console.log(load);
+    console.log(st = $(this).scrollTop()  > lastScrollTop);
    if ( ( $(window).scrollTop() >= $(document).height() - $(window).height() - 10 ) &&
         load === true &&
-        ( st = $(this).scrollTop() ) > lastScrollTop ) {
+        ( st = $(this).scrollTop()  > lastScrollTop ) ) {
 
         lastScrollTop = st;
         var ac = '#product_feed';
@@ -41,7 +43,6 @@ function ajaxload() {
             else {
                 /* else parse and print products */
                 for( key in data ) {
-                    console.log('wtf');
                     $(ac).append(
                         '<div class="col-4 grid-item">' +
                         '<div class="area">' +
