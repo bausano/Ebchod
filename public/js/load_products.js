@@ -1,14 +1,14 @@
-function ajaxload(initial = false, limit = 3) {
-    console.log(st = $(this).scrollTop()  > lastScrollTop);
-   if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 300 ) &&
+function ajaxload(initial = false, limit = 9) {
+    st = $(this).scrollTop();
+   if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 50 ) &&
         ( st = $(this).scrollTop()  > lastScrollTop )) || initial === true)
         &&
         load === true
          ) {
 
         lastScrollTop = st;
-        var ac = '#product_feed';
-        Filter['offset'] = $(ac).children().length;
+        var pf = '#product_feed';
+        Filter['offset'] = $(pf).children().length;
         Filter['limit'] = limit;
         $.ajax({
             url: '/ajax/loadProducts',
@@ -16,13 +16,12 @@ function ajaxload(initial = false, limit = 3) {
             data: $.extend(Filter, { _token: $(".toggle-autocomplete").next().val() })
         }).done(function(data) {
             data = jQuery.parseJSON(data);
-            console.log(data);
             if( data === '403' )
                 return false;
 
             /* if no products, say it */
             if ( data[0] === undefined ) {
-                $(ac).append(
+                $(pf).append(
                     '<div class="col-12 area-4 grid-item">' +
                         '<p class="center big dark-grey-text italic">' +
                             'Bohužel, nemáme už žádné další zboží odpovídající Vašim požadavkům ...' +
@@ -34,7 +33,7 @@ function ajaxload(initial = false, limit = 3) {
             else {
                 /* else parse and print products */
                 for( key in data ) {
-                    $(ac).append(
+                    $(pf).append(
                         '<div class="col-4 grid-item">' +
                         '<div class="area">' +
                         '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
@@ -55,9 +54,9 @@ function ajaxload(initial = false, limit = 3) {
                 }
             }
 
-            $(ac).imagesLoaded( function() {
-                $(ac).masonry('reloadItems');
-                $(ac).masonry('layout');
+            $(pf).imagesLoaded( function() {
+                $(pf).masonry('reloadItems');
+                $(pf).masonry('layout');
             });
         })
     }
@@ -77,12 +76,8 @@ for( x = 0 ; x < s.length ; x++ ) {
 var lastScrollTop = 0
 var throttled = _.throttle(ajaxload, 500);
 
-
-
 $(window).scroll(throttled);
 
 $( document ).ready(function() {
-
-    console.log(load);
     ajaxload(true, 15);
 });
