@@ -25,7 +25,7 @@ function ajaxload(initial = false, limit = 3) {
                 $(ac).append(
                     '<div class="col-12 area-4 grid-item">' +
                         '<p class="center big dark-grey-text italic">' +
-                            'Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...' +
+                            'Bohužel, nemáme už žádné další zboží odpovídající Vašim požadavkům ...' +
                         '</p>' +
                     '</div>'
                 );
@@ -35,7 +35,7 @@ function ajaxload(initial = false, limit = 3) {
                 /* else parse and print products */
                 for( key in data ) {
                     $(ac).append(
-                        '<div class="col-4 grid-item" style="display: none">' +
+                        '<div class="col-4 grid-item">' +
                         '<div class="area">' +
                         '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
                             '<div class="hover product">' +
@@ -57,7 +57,7 @@ function ajaxload(initial = false, limit = 3) {
 
             $(ac).imagesLoaded( function() {
                 $(ac).masonry('reloadItems');
-                $(ac).masonry( 'layout' );
+                $(ac).masonry('layout');
             });
         })
     }

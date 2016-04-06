@@ -8,7 +8,7 @@
 
         </div>
         <div class="col-9 grid" id="product_feed">
-            <?php if(!isset($_GET['pattern'])) : ?>
+            <?php if(!isset($_GET['pattern']) && !isset($_GET['section']) && !isset($_GET['min']) && !isset($_GET['max'])) : ?>
                 <div class="col-12 area-8">
                     <img src="/img/logo.png" width="500" alt="">
                 </div>
