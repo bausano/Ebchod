@@ -43,7 +43,8 @@ function getParameterByName(name, url) {
 }
 
 $(document).ready(function() {
-    $(".product").hover(function() {
+
+    $(".hover .product").hover(function() {
         $(this).find(".product-desc").fadeIn();
     }, function() {
         $(this).find(".product-desc").fadeOut();

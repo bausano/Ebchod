@@ -11,7 +11,7 @@
     <div class="row white-bg">
         <div class="row-90 grid" style="height: 600px;">
             @foreach($favorites as $product)
-                <div class="col-4 grid-item">
+                <div class="col-4 hover grid-item">
                     <div class="area">
                         @include('partials.product')
                     </div>

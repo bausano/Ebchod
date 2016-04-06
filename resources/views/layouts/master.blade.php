@@ -29,7 +29,5 @@
         @yield('main')
         
         @include('partials.footer')
-
-        <img src="" width="0" />
     </body>
 </html>

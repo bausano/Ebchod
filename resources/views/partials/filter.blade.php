@@ -32,5 +32,5 @@
                 </div>
             </div>
         </div>  
-    <p class="small italic dark-grey-text">Oblíbené: Kočárky</p>
+    <p class="small italic dark-grey-text">Oblíbené: Košile Kappa</p>
 </div>
