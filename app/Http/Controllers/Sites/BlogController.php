@@ -20,7 +20,7 @@ class BlogController extends Controller
         return \View::make('blog', [
             'title' => 'Blog',
             'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),
-            'posts' => App\Blog::select()->orderBy('id', 'desc')->get()
+            'posts' => App\Blog::orderBy('id', 'desc')->get()
         ]); 
     }
 
@@ -35,7 +35,7 @@ class BlogController extends Controller
         return \View::make('post', [
             'title' => 'Blog',
             'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
-            'post' => App\Blog::select()->where('id', $id)->get()->first()
+            'post' => App\Blog::where('id', $id)->get()->first()
         ]); 
     }
 

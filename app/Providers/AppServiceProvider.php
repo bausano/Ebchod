@@ -21,7 +21,8 @@ class AppServiceProvider extends ServiceProvider
                 App\Product::min('price'),
                 App\Product::max('price'),
             ],
-            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get()
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),
+            'latestPosts' => App\Blog::orderBy('id', 'desc')->limit(4)->get()
         ]);
     }
 
