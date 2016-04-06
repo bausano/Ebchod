@@ -42,14 +42,13 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+$(document).on('mouseenter', '.product', function () {
+  $(this).find(".product-desc").fadeIn();
+}).on('mouseleave', '.product', function () {
+   $(this).find(".product-desc").fadeOut();
+});
+
 $(document).ready(function() {
-
-    $(".hover .product").hover(function() {
-        $(this).find(".product-desc").fadeIn();
-    }, function() {
-        $(this).find(".product-desc").fadeOut();
-    });
-
     $(".sections-page li").click(function() {
         var id = $(this).data("id");
         $(".sections-page li").each(function() { 

@@ -73,9 +73,8 @@
 		e.preventDefault();
 
 		url = "/products/?pattern=" + $(".toggle-autocomplete").val();
-		Filter["limit"] = -1;
 		for(key in Filter) {
-			if(key === "_token" || key === "pattern" ) continue;
+			if(key === "_token" || key === "pattern" || key === "limit" ) continue;
 			url = url + "&" + key + "=" + Filter[key];
 		}
 
