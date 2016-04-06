@@ -42,10 +42,32 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-$(document).ready(function(){
-    $(".product").hover(function(){
+$(document).ready(function() {
+
+    $(".hover .product").hover(function() {
         $(this).find(".product-desc").fadeIn();
     }, function() {
         $(this).find(".product-desc").fadeOut();
     });
+
+    $(".sections-page li").click(function() {
+        var id = $(this).data("id");
+        $(".sections-page li").each(function() { 
+            if($(this).data("parent") == id ) {
+                $(this).toggle();
+            }
+        })
+    });
+
+    var id = $("#section-" + Filter.section).css({'background-color': "#eee"}).data("parent");
+    while(id !== undefined && id != 0) {
+
+        $(".sections-page li").each(function() {
+            if($(this).data("parent") == id ) {
+                $(this).show();
+            }
+        })
+
+        id = $("#section-" + id).data("parent");
+    }
 });

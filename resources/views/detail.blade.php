@@ -32,25 +32,12 @@
         </div>
     </div>
     <div class="row-90 grey-bg">
-    	<div class="col-3">
-        	<div class="area-4 gallery">
-    			<img src="{{ $product->images->first()->url }}" alt="">
-        	</div>
-        </div>
-    	<div class="col-3">
-        	<div class="area-4 gallery">
-    			<img src="{{ $product->images->first()->url }}" alt="">
-        	</div>
-        </div>
-    	<div class="col-3">
-        	<div class="area-4 gallery">
-    			<img src="{{ $product->images->first()->url }}" alt="">
-        	</div>
-        </div>
-    	<div class="col-3">
-        	<div class="area-4 gallery">
-    			<img src="{{ $product->images->first()->url }}" alt="">
-        	</div>
-        </div>
+        @foreach($product->images as $image)
+            <div class="col-3">
+                <div class="area-4 gallery">
+                    <img src="{{ $image->url }}" alt="">
+                </div>
+            </div>
+        @endforeach
     </div>
 @stop
