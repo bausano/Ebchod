@@ -1,3 +1,4 @@
+var load = true;
 var Filter = {limit: 3};
 
 var s = window.location.href.split('?')[1].split('&');
@@ -8,8 +9,16 @@ for( x = 0 ; x < s.length ; x++ ) {
 }
 
 var throttled = _.throttle(ajaxload, 500);
+var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   console.log(load);
+   if (st > lastScrollTop && load == true){
+       $(window).scroll(throttled);
+   }
+   lastScrollTop = st;
+});
 
-$(window).scroll(throttled);
 
 function ajaxload() {
    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
@@ -21,21 +30,23 @@ function ajaxload() {
             data: $.extend(Filter, { _token: $(".toggle-autocomplete").next().val() })
         }).done(function(data) {
             data = jQuery.parseJSON(data);
-
+            console.log(data);
             if( data === '403' )
                 return false;
 
             /* if no products, say it */
             if ( data[0] === undefined ) {
                 $(ac).append(
-                    'něco ve smyslu že víc nenalezeno ... dát kurzívou a doprostřed'
+                    '<div class="grid-item col-3 message">Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...</div>'
                 );
+                load = false;
             }
             else {
                 /* else parse and print products */
                 for( key in data ) {
+                    console.log('wtf');
                     $(ac).append(
-                        '<div class="col-4 grid-item" style="display: none">' +
+                        '<div class="col-4 grid-item">' +
                         '<div class="area">' +
                         '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
                             '<div class="product">' +
@@ -53,15 +64,12 @@ function ajaxload() {
                         '</div>'
                     );
                 }
+            }
 
+            $(ac).imagesLoaded( function() {
                 $(ac).masonry('reloadItems');
                 $(ac).masonry( 'layout' );
-
-                var e = $(ac + ' > div').slice(-6, -3);
-                for (var i = e.length - 1; i >= 0; i--) {
-                    $(e[i]).fadeIn();
-                }
-            }
+            });
         })
     }
 }
