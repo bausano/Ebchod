@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>{{ 'ebchod | ' . $title }}</title>
+    <title>{{ 'Ebchod | ' . $title }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link href="/css/glob.css" rel="stylesheet" type="text/css">
@@ -17,4 +17,5 @@
     <script type="text/javascript" src="/js/filter.js"></script>
     <script type="text/javascript" src="/js/autocomplete.js"></script>
     <script type="text/javascript" src="/js/load_products.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 </head>

@@ -17,14 +17,16 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $products = App\Product::limit(12);    
+
         return \View::make('products', [
             'title' => 'Produkty',
             'sections' => App\Section::where('parent_id', 0),
+            'products' => $products,
             'priceRange' => [
                 App\Product::min('price'),
                 App\Product::max('price'),
-            ],
-            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get()
+            ]
         ]);
     }
 
@@ -36,8 +38,6 @@ class ProductsController extends Controller
      */
     public function show($id, $name = null)
     {
-        App\Product::where('item_id', $id)->increment('views');
-
         $product = App\Product::where('item_id', $id)->get()->first();  
         return \View::make('detail', [
             'title' => 'Produkt',
