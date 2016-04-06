@@ -1,6 +1,6 @@
 function ajaxload(initial = false, limit = 3) {
     console.log(st = $(this).scrollTop()  > lastScrollTop);
-   if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 10 ) &&
+   if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 300 ) &&
         ( st = $(this).scrollTop()  > lastScrollTop )) || initial === true)
         &&
         load === true
@@ -23,7 +23,11 @@ function ajaxload(initial = false, limit = 3) {
             /* if no products, say it */
             if ( data[0] === undefined ) {
                 $(ac).append(
-                    '<div class="grid-item col-4 message">Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...</div>'
+                    '<div class="col-12 area-4 grid-item">' +
+                        '<p class="center big dark-grey-text italic">' +
+                            'Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...' +
+                        '</p>' +
+                    '</div>'
                 );
                 load = false;
             }
@@ -31,7 +35,7 @@ function ajaxload(initial = false, limit = 3) {
                 /* else parse and print products */
                 for( key in data ) {
                     $(ac).append(
-                        '<div class="col-4 grid-item">' +
+                        '<div class="col-4 grid-item" style="display: none">' +
                         '<div class="area">' +
                         '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
                             '<div class="hover product">' +
@@ -54,13 +58,6 @@ function ajaxload(initial = false, limit = 3) {
             $(ac).imagesLoaded( function() {
                 $(ac).masonry('reloadItems');
                 $(ac).masonry( 'layout' );
-            });
-
-
-            $(".hover .product").hover(function() {
-                $(this).find(".product-desc").fadeIn();
-            }, function() {
-                $(this).find(".product-desc").fadeOut();
             });
         })
     }
