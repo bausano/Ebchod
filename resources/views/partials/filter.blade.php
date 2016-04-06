@@ -3,6 +3,7 @@
     <form>
         <input class="toggle-autocomplete" placeholder="Vyhledávání" type="text" />
         {!! csrf_field() !!}
+        <button style="overflow: visible !important; height: 0 !important; width: 0 !important; margin: 0 !important; border: 0 !important; padding: 0 !important; display: block !important;" type="submit" value="default action"/>
         <button onClick="return false;" class="toggle-filter"><i class="fa fa-gear"></i></button>
         <button class="orange"><i class="fa fa-search"></i></button>
     </form>
