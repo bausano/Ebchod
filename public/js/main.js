@@ -42,7 +42,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-$(document).on('mouseenter', '.product', function () {
+$(document).on('mouseenter', 'hover .product', function () {
   $(this).find(".product-desc").fadeIn();
 }).on('mouseleave', '.product', function () {
    $(this).find(".product-desc").fadeOut();
