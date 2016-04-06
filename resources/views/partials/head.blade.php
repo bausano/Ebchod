@@ -17,4 +17,5 @@
     <script type="text/javascript" src="/js/filter.js"></script>
     <script type="text/javascript" src="/js/autocomplete.js"></script>
     <script type="text/javascript" src="/js/load_products.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 </head>
