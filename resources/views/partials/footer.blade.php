@@ -16,9 +16,12 @@
             </div>        
             <div class="col-3 area-2">
             	<h6 class="light-grey-text big">Vytvořili</h6>
-            	<p class="grey-text medium">&copy; Sleanded codes | 2016</p>
+            	<p class="grey-text medium">&copy; <a href="http://sleanded.com/">Sleanded codes</a> | 2016</p>
             </div>              
         </div>
     </div>
+	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
+	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
+	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
 	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
 </div>

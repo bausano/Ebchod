@@ -31,6 +31,11 @@ Route::group(['namespace' => 'Sites'], function() {
 		Route::get('/{id}/{seo}', 'BlogController@index');
 	});
 
+	/* 1.4 - Partners */
+	Route::group(['prefix' => 'partners'], function() {
+		Route::get('', 'PartnersController@index');
+	});
+
 });
 
 /**
