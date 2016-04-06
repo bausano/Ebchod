@@ -49,10 +49,9 @@ $(document).ready(function() {
                     '</div>' +
                     '</div>'
                 );
-                $(ac).masonry( 'reload' );
-                $(ac).masonry('reloadItems');
-                $(ac).masonry( 'layout' );
             }
+            $(ac).masonry('reloadItems');
+            $(ac).masonry( 'layout' );
         }
     })
 });
