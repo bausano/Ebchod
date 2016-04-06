@@ -19,12 +19,7 @@ class ProductsController extends Controller
     {
         return \View::make('products', [
             'title' => 'Produkty',
-            'sections' => App\Section::where('parent_id', 0),
-            'priceRange' => [
-                App\Product::min('price'),
-                App\Product::max('price'),
-            ],
-            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get()
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),
         ]);
     }
 
@@ -42,7 +37,6 @@ class ProductsController extends Controller
         return \View::make('detail', [
             'title' => 'Produkt',
             'product' => $product,
-            'sections' => App\Section::where('parent_id', 0),
         ]);
     }
 }

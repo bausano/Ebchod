@@ -82,11 +82,3 @@ Route::post('admin/register', 'Auth\AuthController@postRegister');
  * XmlImport Routes
  */
 Route::get('xmlheureka', 'XmlFeedController@heurekaImport');
-
-
-
-
-
-Route::get('test', function() {
-
-});

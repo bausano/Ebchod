@@ -19,12 +19,7 @@ class BlogController extends Controller
     {
         return \View::make('blog', [
             'title' => 'Blog',
-            'sections' => App\Section::where('parent_id', 0),
-            'priceRange' => [
-                App\Product::min('price'),
-                App\Product::max('price'),
-            ],
-            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
+            'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),
             'posts' => App\Blog::select()->orderBy('id', 'desc')->get()
         ]); 
     }
@@ -39,11 +34,6 @@ class BlogController extends Controller
     {
         return \View::make('post', [
             'title' => 'Blog',
-            'sections' => App\Section::where('parent_id', 0),
-            'priceRange' => [
-                App\Product::min('price'),
-                App\Product::max('price'),
-            ],
             'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
             'post' => App\Blog::select()->where('id', $id)->get()->first()
         ]); 

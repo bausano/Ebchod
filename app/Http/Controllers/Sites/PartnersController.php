@@ -19,11 +19,6 @@ class PartnersController extends Controller
     {
         return \View::make('partners', [
             'title' => 'Spolupráce',
-            'sections' => App\Section::where('parent_id', 0),
-            'priceRange' => [
-                App\Product::min('price'),
-                App\Product::max('price'),
-            ],
             'favorites' => App\Product::orderBy('views', 'desc')->limit(9)->get()
         ]);  
     }
