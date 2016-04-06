@@ -8,20 +8,17 @@ for( x = 0 ; x < s.length ; x++ ) {
     Filter[param[0]] = param[1];
 }
 
-var throttled = _.throttle(ajaxload, 500);
-var lastScrollTop = 0;
-$(window).scroll(function(event){
-   var st = $(this).scrollTop();
-   console.log(load);
-   if (st > lastScrollTop && load == true){
-       $(window).scroll(throttled);
-   }
-   lastScrollTop = st;
-});
+var lastScrollTop = 0
+var throttled = _.throttle(ajaxload, 400);
+$(window).scroll(throttled);
 
 
 function ajaxload() {
-   if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+   if ( ( $(window).scrollTop() >= $(document).height() - $(window).height() - 10 ) &&
+        load === true &&
+        ( st = $(this).scrollTop() ) > lastScrollTop ) {
+
+        lastScrollTop = st;
         var ac = '#product_feed';
         Filter['offset'] = $(ac).children().length;
         $.ajax({
@@ -37,7 +34,7 @@ function ajaxload() {
             /* if no products, say it */
             if ( data[0] === undefined ) {
                 $(ac).append(
-                    '<div class="grid-item col-3 message">Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...</div>'
+                    '<div class="grid-item col-4 message">Bohužel, nemáme už žádné další zboží odpovídající Vaším požadavkům ...</div>'
                 );
                 load = false;
             }
