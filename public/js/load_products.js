@@ -16,31 +16,39 @@ $(document).ready(function() {
     }).done(function(data) {
     	data = jQuery.parseJSON(data);
 
-        /* :))))))))))))))))))) */
         console.log(data)
 
     	if( data === '403' )
     		return false;
 
-    	/* removing currrent autocomplete including spinner */
-    	$(ac).children().each(function() {
-    		$(this).remove();
-    	});
-
+    	var ac = '#product_feed';
     	/* if no products, say it */
     	if ( data[0] === undefined ) {
     		$(ac).append(
-    			'<li><strong>Nenalezen žádný produkt</strong></li>'
+    			'něco ve smyslu že víc nenalezeno ... dát kurzívou a doprostřed'
     		);
     	}
     	else {
     		/* else parse and print products */
     		for( key in data ) {
-    			regex = new RegExp('(' + string + ')', 'gi')
-    			print = data[ key ].display_name.replace(regex, '<strong>$1</strong>');
-    			$(ac).append(
-    				'<a href="/products/detail/' + data[ key ].item_id + '"><li>' + print + '</li></a>'
-    			);
+                $(ac).append(
+                    '<div class="col-4 grid-item" style="position:absolute">' +
+                    '<div class="area">' +
+                    '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
+                        '<div class="product">' +
+                            '<div>' +
+                                '<img src="' + data[ key ].img + '" alt="">' +
+                                '<div class="area-4 product-desc">' +
+                                    '<h5 class="uppercase">' + data[ key ].display_name + '</h5>' +
+                                    '<p class="left bold big">' + data[ key ].price + ' Kč</p>' +
+                                    '<p class="justify">' + data[ key ].description + '</p>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' + 
+                    '</a>' +
+                    '</div>' +
+                    '</div>'
+                );
     		}
     	}
     })
