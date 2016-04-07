@@ -28,15 +28,21 @@
                 <div class="col-12 area">
                         <h3 class="cetner">Nelezené produkty</h3>
                 </div>
-                <div class="col-12 area grey-bg">
-                    <form>
-                        Směr řazení&nbsp;
+                <div class="col-4 area grey-bg">
+                    <form class="center">
+                        Směr řazení:&nbsp;
                         <select name="order" id="order">
                             <option value="price-asc">Nejlevnější</option>
                             <option value="price-desc">Nejdražší</option>
                             <option value="views-desc">Nejoblíbenější</option>
                         </select>
                     </form>
+                </div>
+                <div class="col-4 area grey-bg">
+                        <p class="center" style="padding: 6px">Nalezeno <span class="strong count">56</span> produktů</p>
+                </div>
+                <div class="col-4 area grey-bg">
+                        <p class="center" style="padding: 6px">:))</p>
                 </div>
                 <div class="col-12 grid" id="product_feed"></div>
             <?php endif; ?>
