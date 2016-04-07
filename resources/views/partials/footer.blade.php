@@ -3,8 +3,8 @@
         <div class="area">
             <div class="col-3 area-2">
             	<h6 class="light-grey-text big">Nákup</h6>
-            	<p class="grey-text medium">FAQ</p>
-            	<p class="grey-text medium">O affiliate</p>
+            	<p class="grey-text medium"><a href="/faq">FAQ</a></p>
+            	<p class="grey-text medium"><a href="/about">O affiliate</a></p>
             </div>        
             <div class="col-3 area-2">
             	<a href="/partners/"><h6 class="light-grey-text big">Spolupráce</h6></a>

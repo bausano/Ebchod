@@ -44,10 +44,14 @@ class AjaxController extends Controller
             if (null != ($section = urldecode($request->input('section'))))
                 $query->where('section_id', $section);
 
+            $count = $query;
             $products = $query->skip((int) $request->input('offset'))->take((int) $request->input('limit'))->get()->toArray();
+
             foreach ($products as $key => $product) {
                 $products[$key]['img'] = App\Product::find( $product['id'] )->images()->first()->toArray()['url'];
             }
+
+            $products['count'] = count($count->get());
 
             return json_encode(
                 $products
