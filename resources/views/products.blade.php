@@ -39,7 +39,7 @@
                     </form>
                 </div>
                 <div class="col-4 area grey-bg">
-                        <p class="center" style="padding: 6px">Nalezeno <span class="strong count">56</span> produktů</p>
+                        <p class="center" style="padding: 6px">Nalezeno <span class="bold count">56</span> produktů</p>
                 </div>
                 <div class="col-4 area grey-bg">
                         <p class="center" style="padding: 6px">:))</p>
