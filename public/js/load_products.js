@@ -34,24 +34,28 @@ function ajaxload(initial = false, limit = 9, order = "views-desc") {
             else {
                 /* else parse and print products */
                 for( key in data ) {
-                    $(pf).append(
-                        '<div class="col-4 grid-item hover">' +
-                        '<div class="area">' +
-                        '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
-                            '<div class="hover product">' +
-                                '<div>' +
-                                    '<img src="' + data[ key ].img + '" alt="">' +
-                                    '<div class="area-4 product-desc">' +
-                                        '<h5 class="uppercase">' + data[ key ].display_name + '</h5>' +
-                                        '<p class="left bold big">' + data[ key ].price + ' Kč</p>' +
-                                        '<p class="justify small">' + data[ key ].description.substr(0,200) + '...</p>' +
+                    if( key != 'count' ) {
+                        $(pf).append(
+                            '<div class="col-4 grid-item hover">' +
+                            '<div class="area">' +
+                            '<a href="/products/detail/' + data[ key ].item_id + '"> ' +
+                                '<div class="hover product">' +
+                                    '<div>' +
+                                        '<img src="' + data[ key ].img + '" alt="">' +
+                                        '<div class="area-4 product-desc">' +
+                                            '<h5 class="uppercase">' + data[ key ].display_name + '</h5>' +
+                                            '<p class="left bold big">' + data[ key ].price + ' Kč</p>' +
+                                            '<p class="justify small">' + data[ key ].description.substr(0,200) + '...</p>' +
+                                        '</div>' +
                                     '</div>' +
-                                '</div>' +
-                            '</div>' + 
-                        '</a>' +
-                        '</div>' +
-                        '</div>'
-                    );
+                                '</div>' + 
+                            '</a>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    } else {
+                        $(".count").text(data[key]);
+                    }
                 }
             }
 

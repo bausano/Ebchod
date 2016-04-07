@@ -25,7 +25,7 @@
                 </div>
             <?php else : ?>
                 <div class="col-12 area">
-                        <h3 class="cetner">Nelezené produkty</h3>
+                        <h3 class="cetner">Nalezené produkty</h3>
                 </div>
                 <div class="col-4 area grey-bg">
                     <form class="center">
@@ -38,7 +38,7 @@
                     </form>
                 </div>
                 <div class="col-4 area grey-bg">
-                        <p class="center" style="padding: 6px">Nalezeno <span class="bold count">56</span> produktů</p>
+                        <p class="center" style="padding: 6px">Nalezeno <span class="bold count"></span> produktů</p>
                 </div>
                 <div class="col-4 area grey-bg">
                         <p class="center" style="padding: 6px">&nbsp;</p>
