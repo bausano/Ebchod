@@ -83,5 +83,5 @@ $( document ).ready(function() {
 
     $( "#order" ).change(function() {
         alert(this.value);
-    })
+    });
 });
