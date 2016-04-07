@@ -21,7 +21,6 @@ class CreateBlogsTable extends Migration
             $table->string('sections');
             $table->longText('content');
             $table->boolean('display')->default(true);
-            $table->integer('views');
 
             $table->timestamps();
         });

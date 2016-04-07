@@ -18,7 +18,6 @@ class CreateShopsTable extends Migration
             $table->mediumText('description');
             $table->string('url', 250);
             $table->string('affiliate', 100);
-            $table->decimal('earned', 10, 2);
         });
     }
 
