@@ -30,25 +30,6 @@ $(document).ready(function() {
         parallax: true,
         touch: false
     });
-});
-
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-$(document).on('mouseenter', '.hover .product', function () {
-  $(this).find(".product-desc").fadeIn();
-}).on('mouseleave', '.product', function () {
-   $(this).find(".product-desc").fadeOut();
-});
-
-$(document).ready(function() {
     $(".sections-page li").click(function() {
         var id = $(this).data("id");
         $(".sections-page li").each(function() { 
@@ -69,4 +50,29 @@ $(document).ready(function() {
 
         id = $("#section-" + id).data("parent");
     }
+
+    if($.cookie('accepted') != 1) {
+        $("#accept-cookies").slideToggle();
+    }
+
+    $("#accept-cookies button").click(function(){
+        $("#accept-cookies").slideToggle();
+        $.cookie('accepted', 1);
+    });
+});
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+$(document).on('mouseenter', '.hover .product', function () {
+  $(this).find(".product-desc").fadeIn();
+}).on('mouseleave', '.product', function () {
+   $(this).find(".product-desc").fadeOut();
 });
