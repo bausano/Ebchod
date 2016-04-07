@@ -122,6 +122,7 @@ class AdminController extends Controller
         }
         
         return \View::make('admin/statistics', [
+            'title' => 'Statistiky',
             'top_products' => $products,
             'shops' => $shops,
             'total' => $total

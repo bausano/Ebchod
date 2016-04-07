@@ -1,6 +1,7 @@
 @extends('layouts.page')
 
 @section('main')
+    <script type="text/javascript" src="/js/load_products.js"></script>
     <div class="row-90 white-bg">
         <div class="col-3">
             
@@ -46,4 +47,9 @@
             <?php endif; ?>
         </div>
     </div>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+        });
+    </script>
 @stop
