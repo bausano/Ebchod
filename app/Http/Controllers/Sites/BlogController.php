@@ -32,10 +32,12 @@ class BlogController extends Controller
      */
     public function show($id, $seo)
     {
+        $post = App\Blog::where('id', $id)->get()->first();
         return \View::make('post', [
             'title' => 'Blog',
             'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),   
-            'post' => App\Blog::where('id', $id)->get()->first()
+            'post' => $post,
+            'relevant' => App\Product::whereIn('section_id', explode(';', $post->sections))->orderBy('views', 'desc')->limit(6)->get()
         ]); 
     }
 
