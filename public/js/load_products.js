@@ -80,4 +80,8 @@ $(window).scroll(throttled);
 
 $( document ).ready(function() {
     ajaxload(true, 15);
+
+    $( "#order" ).change(function() {
+        alert(this.value);
+    })
 });
