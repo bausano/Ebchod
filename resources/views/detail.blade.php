@@ -23,6 +23,8 @@
         <div class="col-6">
         	<div class="area-8">
          		<h4 class="uppercase">{{ $product->display_name }}</h4>
+                <input type="hidden" id="product_id" value="{{ $product->id }}">
+                {!! csrf_field() !!}
         		<p class="left bold big margin">{{ $product->price }} Kč</p>
          		<p class="justify margin">
          			{{ $product->description }}
@@ -40,4 +42,6 @@
             </div>
         @endforeach
     </div>
+
+    <script type="text/javascript" src="/js/refer.js"> </script>
 @stop

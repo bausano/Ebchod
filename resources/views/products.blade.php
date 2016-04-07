@@ -47,9 +47,4 @@
             <?php endif; ?>
         </div>
     </div>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-
-        });
-    </script>
 @stop
