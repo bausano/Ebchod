@@ -16,12 +16,12 @@
                 </div>
                 <div class="col-6 area-4">
                     <p class="big justify dark-grey-text">
-                        Na této stránce najdete nejširší škálu produktů z mnoha e-shopů, se kterými spolupracujeme.
+                        Na této stránce najdete širokou škálu produktů z mnoha e-shopů, se kterými spolupracujeme.
                     </p>
                 </div>
                 <div class="col-6 area-4">
                     <p class="big justify dark-grey-text">
-                        Využijte filterů a vyberte si zboží přesně podle Vašeho gusta!
+                        Využijte filtrů a vyberte si zboží přesně podle Vašeho gusta!
                     </p>
                 </div>
             <?php else : ?>

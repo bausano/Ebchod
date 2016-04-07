@@ -30,7 +30,7 @@
 						<a href="/admin/blog/add">Přidat</a>
 					</nav>
 					<a href=""><i class="fa fa-database"></i> Import</a>
-					<a href=""><i class="fa fa-pie-chart"></i> Statistiky</a>
+					<a href="/admin/statistics"><i class="fa fa-pie-chart"></i> Statistiky</a>
 					<a class="static"></a>
 					<a href="/"><i class="fa fa-home"></i> Stránka</a>
 					<a class="static"></a>

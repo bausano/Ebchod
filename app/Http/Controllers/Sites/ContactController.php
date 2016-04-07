@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Sites;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App;
-
-class AdminController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return \View::make('admin/index', [
-            'title' => 'Admin'
-        ]);  
+        //
     }
 
     /**
@@ -87,22 +83,5 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function statistics() {
-
-        $products = App\Product::orderBy('views', 'desc')
-                    ->limit(3)
-                    ->select(['id', 'item_id', 'display_name', 'views'])
-                    ->get()
-                    ->toArray();
-        foreach ($products as $key => $product) {
-            $products[$key]['img'] = App\Product::find( $product['id'] )->images()->first()->toArray()['url'];
-        }
-
-        return \View::make('admin/statistics', [
-            'title' => 'Statistiky',
-            'top_products' => $products
-        ]);  
     }
 }

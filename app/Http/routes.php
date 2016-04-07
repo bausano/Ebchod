@@ -41,9 +41,14 @@ Route::group(['namespace' => 'Sites'], function() {
 		Route::get('', 'AboutController@index');
 	});
 
-	/* 1.5 - FAQ */
+	/* 1.6 - FAQ */
 	Route::group(['prefix' => 'faq'], function() {
 		Route::get('', 'FAQController@index');
+	});
+
+	/* 1.7 - FAQ */
+	Route::group(['prefix' => 'contact'], function() {
+		Route::get('', 'ContactController@index');
 	});
 
 });
