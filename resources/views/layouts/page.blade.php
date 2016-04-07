@@ -6,7 +6,7 @@
     <body id="page">
         <div class="row header">
             <div class="col-12">
- 
+            
                 @include('partials.menu')
 
                 <div class="col-12 area-6">
