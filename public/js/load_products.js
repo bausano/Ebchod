@@ -1,4 +1,4 @@
-function ajaxload(initial = false, limit = 9) {
+function ajaxload(initial = false, limit = 9, order = "views-desc") {
     st = $(this).scrollTop();
    if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 50 ) &&
         ( st = $(this).scrollTop()  > lastScrollTop )) || initial === true)
@@ -10,6 +10,7 @@ function ajaxload(initial = false, limit = 9) {
         var pf = '#product_feed';
         Filter['offset'] = $(pf).children().length;
         Filter['limit'] = limit;
+        Filter["order"] = order;
         $.ajax({
             url: '/ajax/loadProducts',
             method: 'post',
@@ -83,11 +84,8 @@ $( document ).ready(function() {
     ajaxload(true, 15);
 
     $( "#order" ).change(function() {
-        Filter["order"] = $(this).value;
         $('#product_feed').empty();
-
-        alert(this.value);
-        ajaxload(true, 15);
+        ajaxload(true, 15, this.value);
 
     });
 });
