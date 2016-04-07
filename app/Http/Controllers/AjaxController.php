@@ -30,9 +30,9 @@ class AjaxController extends Controller
     {   
         if ($request->isMethod('post')) 
         {
-            if(null == ($order = explode("-", $request->order)))
+            if(null == ($order = explode("-", $request->order)) || count($order) != 2)
                 $order = ['views', 'desc'];
-
+            
             $query = App\Product::orderBy($order[0], $order[1]);
 
             if (null != ($pattern = urldecode($request->input('pattern'))))
