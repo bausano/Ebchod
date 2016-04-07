@@ -9,7 +9,7 @@
  
                 @include('partials.menu')
 
-                <div class="row area-6">
+                <div class="col-12 area-6">
                     @include('partials.filter')
                 </div>
 

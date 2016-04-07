@@ -30,6 +30,7 @@ $(document).ready(function() {
         parallax: true,
         touch: false
     });
+    
     $(".sections-page li").click(function() {
         var id = $(this).data("id");
         $(".sections-page li").each(function() { 
