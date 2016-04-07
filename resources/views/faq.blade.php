@@ -6,9 +6,19 @@
 			<h3 class="white-text">Často kladené otázky</h3>
 		</div>
 		<div class="col-12 area white-bg">
-			<h5>Lorem ipsum?</h5>
+			<h5 class="margin">Lorem ipsum?</h5>
+			<p class="grey-text-big-justify">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt minima, blanditiis ut quisquam voluptatum alias! Consequuntur unde vitae alias eveniet voluptatum saepe mollitia at! Soluta facere quibusdam maiores reiciendis, laudantium enim, officiis libero quia animi porro itaque earum totam ea ducimus minus, inventore! Nihil eum laboriosam ullam eveniet, explicabo sint!
+			</p>
+		</div>
+		<div class="col-12 area grey-bg">
+			<h5 class="margin">Lorem ipsum?</h5>
+			<p class="grey-text-big-justify">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt minima, blanditiis ut quisquam voluptatum alias! Consequuntur unde vitae alias eveniet voluptatum saepe mollitia at! Soluta facere quibusdam maiores reiciendis, laudantium enim, officiis libero quia animi porro itaque earum totam ea ducimus minus, inventore! Nihil eum laboriosam ullam eveniet, explicabo sint!
+			</p>
 		</div>
 		<div class="col-12 area white-bg">
+			<h5 class="margin">Lorem ipsum?</h5>
 			<p class="grey-text-big-justify">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt minima, blanditiis ut quisquam voluptatum alias! Consequuntur unde vitae alias eveniet voluptatum saepe mollitia at! Soluta facere quibusdam maiores reiciendis, laudantium enim, officiis libero quia animi porro itaque earum totam ea ducimus minus, inventore! Nihil eum laboriosam ullam eveniet, explicabo sint!
 			</p>

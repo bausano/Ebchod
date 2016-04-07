@@ -33,5 +33,5 @@
                 </div>
             </div>
         </div>  
-    <p class="small italic dark-grey-text">Oblíbené: Košile Kappa</p>
+    <p class="small italic dark-grey-text">Oblíbené: {{ $favSection }}</p>
 </div>

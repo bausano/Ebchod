@@ -9,7 +9,7 @@
             @include('partials.side-bar')
 
         </div>
-        <div class="col-9 grid" id="product_feed">
+        <div class="col-9">
             <?php if(!isset($_GET['pattern']) && !isset($_GET['section']) && !isset($_GET['min']) && !isset($_GET['max'])) : ?>
                 <div class="col-12 area-8">
                     <img src="/img/logo.png" width="500" alt="">
@@ -24,6 +24,21 @@
                         Využijte filterů a vyberte si zboží přesně podle Vašeho gusta!
                     </p>
                 </div>
+            <?php else : ?>
+                <div class="col-12 area">
+                        <h3 class="cetner">Nelezené produkty</h3>
+                </div>
+                <div class="col-12 area grey-bg">
+                    <form>
+                        Směr řazení&nbsp;
+                        <select name="order" id="order">
+                            <option value="price-asc">Nejlevnější</option>
+                            <option value="price-desc">Nejdražší</option>
+                            <option value="views-desc">Nejoblíbenější</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-12 grid" id="product_feed"></div>
             <?php endif; ?>
         </div>
     </div>
