@@ -36,7 +36,7 @@
             </p>
             <p class="justify dark-grey-text">
                 Celkem kliknutí: <span class="bold">{{ $total['clicks'] }}</span>
-                <span class="italic">({{ round($total['earned'] / $total['clicks'], 2) }} Kč/klik)</span>
+                <span class="italic">({{ @round($total['earned'] / $total['clicks'], 2) }} Kč/klik)</span>
             </p>
             <p class="justify dark-grey-text">
                 <a href="https://analytics.google.com/analytics/web/?hl=cs&pli=1#report/defaultid/a70806703w108083943p112611554/"

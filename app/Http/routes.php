@@ -66,13 +66,12 @@ Route::group(['prefix' => 'ajax'], function() {
  */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::get('', 'AdminController@index'); // Index
-	Route::get('add', 'AdminController@create'); // Add shop
-	Route::post('add', 'AdminController@store'); // Add shop
-	Route::get('edit', 'AdminController@edit'); // Edit shop
-	Route::post('edit', 'AdminController@update'); // Edit shop
-	Route::post('delete', 'AdminController@destroy'); // Delete shop
 	Route::get('import', 'AdminController@import'); // Force import
 	Route::get('statistics', 'AdminController@statistics'); // Statictics
+
+	Route::group(['prefix' => 'shops'], function() {
+		Route::get('browse', 'ShopsController@index'); // Browse eshops
+	});
 
 	Route::group(['prefix' => 'blog'], function() {
 		Route::get('add', 'BlogController@create'); // Add blog thread

@@ -21,7 +21,7 @@
 				<nav class="admin-menu">
 					<a href="#"><i class="fa fa-shopping-cart"></i> Affiliate</a>
 					<nav class="admin-submenu">
-						<a href="">Procházet</a>
+						<a href="/admin/shops/browse/">Procházet</a>
 						<a href="">Přidat</a>
 					</nav>
 					<a href="#"><i class="fa fa-comments-o"></i> Blog</a>
