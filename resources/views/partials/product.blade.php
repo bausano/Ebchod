@@ -1,4 +1,4 @@
-<a href="/products/detail/{{ $product->item_id }}">
+<a href="/products/detail/{{ $product->item_id }}" target="product">
 	<div class="product">
 	    <div>
 	    	<img src="{{ $product->images->first()->url }}" alt="">

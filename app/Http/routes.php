@@ -58,6 +58,7 @@ Route::group(['namespace' => 'Sites'], function() {
  */
 Route::group(['prefix' => 'ajax'], function() {
 	Route::post('loadProducts', 'AjaxController@loadProducts');
+	Route::post('eshopRefer', 'AjaxController@eshopRefer');
 });
 
 /**

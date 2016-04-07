@@ -1,6 +1,7 @@
 @extends('layouts.page')
 
 @section('main')
+    <script type="text/javascript" src="/js/load_products.js"></script>
     <div class="row-90 white-bg">
         <div class="col-3">
             
