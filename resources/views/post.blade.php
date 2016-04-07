@@ -8,7 +8,7 @@
 		<div class="col-9">
 			<div class="col-12 area-4">
 				<h3>{{ $post->name }}</h3>
-				{{ $post->content }}
+				<?= $post->content ?>
 			</div>
 			<div class="col-3 area-4 grey-bg gallery">
 				<img src="/uploads/{{ $post->img }}" alt="" class="bordered">

@@ -32,6 +32,7 @@ class BlogController extends Controller
      */
     public function show($id, $seo)
     {
+        App\Product::where('id', $id)->increment('views');
         $post = App\Blog::where('id', $id)->get()->first();
         return \View::make('post', [
             'title' => 'Blog',
