@@ -58,7 +58,7 @@ function ajaxload(initial = false, limit = 9) {
                 $(pf).masonry('reloadItems');
                 $(pf).masonry('layout');
             });
-        })
+        });
     }
 }
 
@@ -73,15 +73,21 @@ for( x = 0 ; x < s.length ; x++ ) {
     Filter[param[0]] = (param[1]);
 }
 
-var lastScrollTop = 0
+var lastScrollTop = 0;
 var throttled = _.throttle(ajaxload, 500);
 
 $(window).scroll(throttled);
+
 
 $( document ).ready(function() {
     ajaxload(true, 15);
 
     $( "#order" ).change(function() {
+        Filter["order"] = $(this).value;
+        $('#product_feed').empty();
+
         alert(this.value);
+        ajaxload(true, 15);
+
     });
 });

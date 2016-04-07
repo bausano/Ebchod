@@ -30,6 +30,7 @@ class AjaxController extends Controller
     {   
         if ($request->isMethod('post')) 
         {
+            var_dump($request);
             $query = App\Product::orderBy('views', 'DESC');
             if (null != ($pattern = urldecode($request->input('pattern'))))
                 $query->where('product_name', 'regexp', $pattern);
