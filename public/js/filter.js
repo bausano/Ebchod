@@ -5,11 +5,11 @@
 /* Filter data ( name: value ) */
 var Filter = { };
 
-if( pattern = getParameterByName('pattern') != '' ) {
+if( pattern = getParameterByName('pattern') != '' && pattern.length > 2 ) {
 	Filter['pattern'] = pattern;
 }
 
-if( section = getParameterByName('section') != '' ) {
+if( section = getParameterByName('section') != '' && Number.isInteger(parseInt(section)) ) {
 	Filter['section'] = pattern;
 }
 

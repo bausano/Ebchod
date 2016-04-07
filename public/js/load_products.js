@@ -54,7 +54,7 @@ function ajaxload(initial = false, limit = 9, order = "views-desc") {
                             '</div>'
                         );
                     } else {
-                        $(".count").text(data[key]);
+                        $(".count").text(26);
                     }
                 }
             }
