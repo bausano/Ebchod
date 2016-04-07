@@ -3,7 +3,16 @@
  */
 
 /* Filter data ( name: value ) */
-var Filter = {};
+var Filter = { };
+
+if( pattern = getParameterByName('pattern') != '' ) {
+	Filter['pattern'] = pattern;
+}
+
+if( section = getParameterByName('section') != '' ) {
+	Filter['section'] = pattern;
+}
+
 
 $(document).ready(function() {
 

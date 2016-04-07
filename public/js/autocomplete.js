@@ -74,7 +74,8 @@
 
 		url = "/products/?pattern=" + $(".toggle-autocomplete").val();
 		for(key in Filter) {
-			if(key === "_token" || key === "pattern" || key === "limit" ) continue;
+			if(key === "_token" || key === "pattern" || key === "limit" || key === "offset" ) continue;
+			if(key === "section" && !Number.isInteger(parseInt(Filter[key]))) continue;
 			url = url + "&" + key + "=" + Filter[key];
 		}
 

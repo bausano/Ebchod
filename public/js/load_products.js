@@ -67,7 +67,12 @@ function ajaxload(initial = false, limit = 9, order = "views-desc") {
 var load = true;
 var Filter = {limit: 3};
 
-var s = window.location.href.split('?')[1].split('&');
+if( window.location.href.search('=') >= 0 ) {
+    var s = window.location.href.split('?')[1].split('&');
+} else {
+    var s = {};
+}
+
 
 for( x = 0 ; x < s.length ; x++ ) {
     param = s[x].split("=");
