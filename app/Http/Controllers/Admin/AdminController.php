@@ -91,18 +91,40 @@ class AdminController extends Controller
 
     public function statistics() {
 
-        $products = App\Product::orderBy('views', 'desc')
+        // Getting data about top 3 products
+        $products = App\Product::orderBy('clicks', 'desc')
                     ->limit(3)
-                    ->select(['id', 'item_id', 'display_name', 'views'])
+                    ->select(['id', 'item_id', 'clicks', 'views'])
                     ->get()
                     ->toArray();
         foreach ($products as $key => $product) {
             $products[$key]['img'] = App\Product::find( $product['id'] )->images()->first()->toArray()['url'];
         }
 
+        // Total clicks and earned money
+        $total['clicks'] = App\Product::sum('clicks');
+        $total['earned'] = 0;
+
+        // Getting data about shops + clicks per shop
+        $shops_query = App\Shop::orderBy('name', 'desc')
+                                ->select(['id', 'name', 'earned'])->get();
+        $shops = [];
+
+        foreach ($shops_query as $shop) {
+            $shops[] = [
+                'id' => $shop->id,
+                'name' => $shop->name,
+                'earned' => $shop->earned,
+                'clicks' => round(
+                            App\Product::where('shop_id', '=', $shop->id)->sum('clicks'), 2)
+            ];
+            $total['earned'] += $shop->earned;
+        }
         return \View::make('admin/statistics', [
             'title' => 'Statistiky',
-            'top_products' => $products
+            'top_products' => $products,
+            'shops' => $shops,
+            'total' => $total
         ]);  
     }
 }

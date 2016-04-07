@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-12 area grey-bg">
                     <form>
-                        Směr řazení&nbsp;
+                        Řadit podle &nbsp;
                         <select name="order" id="order">
                             <option value="price-asc">Nejlevnější</option>
                             <option value="price-desc">Nejdražší</option>
