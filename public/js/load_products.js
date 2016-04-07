@@ -1,4 +1,4 @@
-function ajaxload(initial = false, limit = 9) {
+function ajaxload(initial = false, limit = 9, order = "views-desc") {
     st = $(this).scrollTop();
    if ( ((( $(window).scrollTop() >= $(document).height() - $(window).height() - 50 ) &&
         ( st = $(this).scrollTop()  > lastScrollTop )) || initial === true)
@@ -10,6 +10,7 @@ function ajaxload(initial = false, limit = 9) {
         var pf = '#product_feed';
         Filter['offset'] = $(pf).children().length;
         Filter['limit'] = limit;
+        Filter["order"] = order;
         $.ajax({
             url: '/ajax/loadProducts',
             method: 'post',
@@ -58,7 +59,7 @@ function ajaxload(initial = false, limit = 9) {
                 $(pf).masonry('reloadItems');
                 $(pf).masonry('layout');
             });
-        })
+        });
     }
 }
 
@@ -73,15 +74,18 @@ for( x = 0 ; x < s.length ; x++ ) {
     Filter[param[0]] = (param[1]);
 }
 
-var lastScrollTop = 0
+var lastScrollTop = 0;
 var throttled = _.throttle(ajaxload, 500);
 
 $(window).scroll(throttled);
+
 
 $( document ).ready(function() {
     ajaxload(true, 15);
 
     $( "#order" ).change(function() {
-        alert(this.value);
+        $('#product_feed').empty();
+        ajaxload(true, 15, this.value);
+
     });
 });

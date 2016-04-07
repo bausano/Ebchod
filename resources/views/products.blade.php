@@ -30,9 +30,9 @@
                     <form class="center">
                         Směr řazení:&nbsp;
                         <select name="order" id="order">
+                            <option value="views-desc">Nejoblíbenější</option>
                             <option value="price-asc">Nejlevnější</option>
                             <option value="price-desc">Nejdražší</option>
-                            <option value="views-desc">Nejoblíbenější</option>
                         </select>
                     </form>
                 </div>
