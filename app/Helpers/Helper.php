@@ -2,7 +2,7 @@
 
 class Helper 
 {
-	public static function sectionTree($sections, $indent = 0)
+	public static function sectionTree($sections, $indent = 0, $display = "block")
 	{
 		if(count($sections) == 0)
 			return "<li>Nenalezena žádná kategorie</li>";
@@ -11,10 +11,13 @@ class Helper
 
 		foreach($sections as $section)
 		{
-			$html .= '<li class="section-option" style="text-indent: ' . $indent . 'px;" data-option="' . $section->id . '">' . $section->name . '</li>';
-
 			if(count($section->children) > 0)
-				$html .= self::sectionTree($section->children, $indent + 10);
+			{
+				$html .= '<li class="section-option-inactive" data-id="' . $section->id . '" data-parent="' . $section->parent["id"] . '" style="display: ' . $display . '; text-indent: ' . $indent . 'px;">' . $section->name . '</li>';
+				$html .= self::sectionTree($section->children, $indent + 10, "none");
+			}
+			else
+				$html .= '<li class="section-option" data-id="' . $section->id . '" data-parent="' . $section->parent["id"] . '" style="display: ' . $display . '; text-indent: ' . $indent . 'px;" data-option="' . $section->id . '">' . $section->name . '</li>';
 
 		}
 		

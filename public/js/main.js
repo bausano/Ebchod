@@ -31,15 +31,15 @@ $(document).ready(function() {
         touch: false
     });
     
-    $(".sections-page li").click(function() {
+    $(".sections-page li, .filter .sections li").click(function() {
         var id = $(this).data("id");
-        $(".sections-page li").each(function() { 
+        $(this).parent().find('li').each(function() { 
             if($(this).data("parent") == id ) {
                 $(this).toggle();
             }
         })
     });
-
+    
     var id = $("#section-" + Filter.section).css({'background-color': "#eee"}).data("parent");
     while(id !== undefined && id != 0) {
 

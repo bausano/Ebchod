@@ -53,7 +53,8 @@ $(document).ready(function() {
 			buildFilter({ section: $(this).data('value') });
 		}
 
-		$(".sections").toggle();
+		if(!$(li).is(".section-option-inactive"))
+			$(".sections").toggle();
 	});
 
 	/* Clearing section */
