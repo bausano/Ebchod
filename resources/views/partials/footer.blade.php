@@ -7,7 +7,7 @@
             	<p class="grey-text medium">O affiliate</p>
             </div>        
             <div class="col-3 area-2">
-            	<h6 class="light-grey-text big">Spolupráce</h6>
+            	<a href="/partners/"><h6 class="light-grey-text big">Spolupráce</h6></a>
             	<p class="grey-text medium">willsoor.cz</p>
             </div>        
             <div class="col-3 area-2">

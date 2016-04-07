@@ -55,6 +55,9 @@ class BlogController extends Controller
                 'img' => $img
             ];
 
+            if( isset( $request->sections_ids ) )
+                $data[ 'sections' ] = $request->sections_ids;
+            
             App\Blog::insert($data);
         }
 
