@@ -6,8 +6,11 @@
 			<h3 class="white-text">Co je to affiliate systém?</h3>
 		</div>
 		<div class="col-12 area white-bg">
+			<p class="grey-text-big-justify margin">
+				Tento marketingový systém funguje na principu dohody mezi vlastníkem eshopu a správcem affiliate systému. Původní eshop poskytne seznam svých produktů, které správce redistribuje. Zboží ovšem fyzicky nevlastní, po kliknutí na tlačítko "koupit" je zákazník přesměrován na externí eshop, kde si zboží zakoupí. Správce obdrží provizi ze zisku ve výši předem dohodnuté s vlasntíkem eshopu.
+			</p>
 			<p class="grey-text-big-justify">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt minima, blanditiis ut quisquam voluptatum alias! Consequuntur unde vitae alias eveniet voluptatum saepe mollitia at! Soluta facere quibusdam maiores reiciendis, laudantium enim, officiis libero quia animi porro itaque earum totam ea ducimus minus, inventore! Nihil eum laboriosam ullam eveniet, explicabo sint!
+				Cena produktu zůstává pro zákazníka stejná, jako kdyby jej kupoval na původním eshopu.
 			</p>
 		</div>
 	</div>
