@@ -47,11 +47,13 @@
 	    	else {
 	    		/* else parse and print products */
 	    		for( key in data ) {
-	    			regex = new RegExp('(' + string + ')', 'gi')
-	    			print = data[ key ].display_name.replace(regex, '<strong>$1</strong>');
-	    			$(ac).append(
-	    				'<a href="/products/detail/' + data[ key ].item_id + '"><li>' + print + '</li></a>'
-	    			);
+	    			if( key != 'count' ) {
+		    			regex = new RegExp('(' + string + ')', 'gi')
+		    			print = data[ key ].display_name.replace(regex, '<strong>$1</strong>');
+		    			$(ac).append(
+		    				'<a href="/products/detail/' + data[ key ].item_id + '"><li>' + print + '</li></a>'
+		    			);
+	    			}
 	    		}
 	    	}
     });
