@@ -19,7 +19,7 @@
                 @include('partials.menu')
                 
                 <div class="motto">
-                    <h1 class="center light dark-grey-text">Nejširší škála zboží na jednom místě</h1>
+                    <h1 class="center light dark-grey-text">Široká škála kvalitního zboží na jednom místě</h1>
                 </div>
 
                 @include('partials.filter')

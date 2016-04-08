@@ -5,15 +5,6 @@
 /* Filter data ( name: value ) */
 var Filter = { };
 
-if( pattern = getParameterByName('pattern') != '' && pattern.length > 2 ) {
-	Filter['pattern'] = pattern;
-}
-
-if( section = getParameterByName('section') != '' && Number.isInteger(parseInt(section)) ) {
-	Filter['section'] = pattern;
-}
-
-
 $(document).ready(function() {
 
 	/* Optimalization for mobiles */

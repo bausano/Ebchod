@@ -24,18 +24,9 @@
             </div>              
         </div>
     </div>
-	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
-	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
-	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
-	<img src="" style="position: absolute; visibility: hidden; width: 0px; height: 0px;" />
 
-    <div style="display: none">
-    <?php
-        // TODO: finish
-        $affiliate = App\Shop::get()->toArray();
-    ?>
-        @foreach($affiliate as $pixel) 
-            <img src=" {{$pixel['url']}} ">
-        @endforeach
-    </div>
+    @foreach($affiliate as $pixel) 
+        <img src=" {{ $pixel->url . '/' .  $pixel->affiliate }}" style="position: absolute; visibility: hidden; width: 0px; height: 0px;">
+    @endforeach
+    
 </div>

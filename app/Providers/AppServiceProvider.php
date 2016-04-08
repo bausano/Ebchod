@@ -23,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
             ],
             'favorites' => App\Product::orderBy('views', 'desc')->limit(6)->get(),
             'latestPosts' => App\Blog::orderBy('id', 'desc')->limit(4)->get(),
-            'favSection' => App\Product::orderBy('views', 'desc')->get()->first()->section->name
+            'favSection' => App\Product::orderBy('views', 'desc')->get()->first()->section->name,
+            'affiliate' => App\Shop::get()
         ]);
     }
 
